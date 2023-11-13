@@ -1,0 +1,237 @@
+                 /*CREDIT CARD*/
+                 /*CREDIT CARD*/
+    .credit-card-application-section {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 2rem;
+        margin: 2rem 0;
+       
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    
+    .credit-card-application-section h2 {
+        color: #0074cc;
+    }
+    
+    .credit-card-application-section p {
+        margin: 1rem 0;
+    }
+
+    .credit-card-application-form form label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    
+    .credit-card-application-form form input[type="text"],
+    .credit-card-application-form form input[type="email"],
+    .credit-card-application-form form input[type="number"] {
+        width: 100%;
+        padding: 0.5rem;
+        margin: 0.25rem 0;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    .credit-card-application-form form input[type="submit"] {
+        background-color: #0074cc;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border: none;
+        cursor: pointer;
+        margin-top: 1rem;
+        border-radius: 3px;
+    }
+    
+    .credit-card-application-form form input[type="submit"]:hover {
+        background-color: #0054a0;
+    }
+
+                  /*CREDIT CARD*/
+                 /*CREDIT CARD*/
+
+
+                /*LOAN APPLICATION*/
+                /*LOAN APPLICATION*/
+                
+    .loan-application-section {
+
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.loan-application-section h2 {
+    color: #0074cc;
+}
+
+#loan-application-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#loan-application-form select,
+#loan-application-form input[type="number"],
+#loan-application-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#loan-application-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#loan-application-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+                /*LOAN APPLICATION*/
+                /*LOAN APPLICATION*/
+
+
+                /*SAVINGS*/
+                /*SAVINGS*/
+.savings-goals-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.savings-goals-section h2 {
+    color: #0074cc;
+}
+
+#savings-goals-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#savings-goals-form input[type="text"],
+#savings-goals-form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#savings-goals-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#savings-goals-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+.savings-goals-list {
+    margin-top: 2rem;
+}
+
+.savings-goals-list h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.savings-goals-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.savings-goals-list li {
+    margin: 0.5rem 0;
+}
+
+.savings-goals-list .completed {
+    color: #5cb85c; 
+}
+
+                /*SAVINGS*/
+                /*SAVINGS*/
+
+
+
+                 /*FINANCIAL CALCULATOR*/
+                 /*FINANCIAL CALCULATOR*/
+
+.financial-calculator-section {
+background-color: #fff;
+border: 1px solid #ccc;
+padding: 2rem;
+margin: 2rem 0;
+
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+
+.financial-calculator-section h2 {
+color: #0074cc;
+}
+
+.calculator {
+margin: 1.5rem 0;
+padding: 1rem;
+border: 1px solid #ccc;
+border-radius: 3px;
+}
+
+.calculator h3 {
+color: #0074cc;
+}
+
+.calculator form label {
+font-weight: bold;
+display: block;
+margin-bottom: 0.5rem;
+}
+
+.calculator form input[type="submit"] {
+background-color: #0074cc;
+color: #fff;
+padding: 0.5rem 1rem;
+border: none;
+cursor: pointer;
+margin-top: 1rem;
+border-radius: 3px;
+}
+
+.calculator form input[type="submit"]:hover {
+background-color: #0054a0;
+}
+
+.calculator-result {
+margin-top: 2rem;
+}
+
+.calculator-result h4 {
+color: #0074cc;
+font-size: 1.2rem;
+margin-bottom: 1rem;
+}
+
+                 /*FINANCIAL CALCULATOR*/
+                 /*FINANCIAL CALCULATOR*/

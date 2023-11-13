@@ -1,0 +1,1796 @@
+#popup-menu
+{
+    display: none;
+}
+#Loan_Application
+{
+    display: none;
+}
+#Credit_Card_Application
+{
+    display: none;
+}
+#Savings_Goals
+{
+    display: none;
+}
+
+ #customer-support
+ {
+    display: none;
+}
+ #Tax_Center
+ {
+    display: none;
+}
+ #Retirement_Planning
+ {
+    display: none;
+}
+ #Financial_Calculators
+{
+    display: none;
+}
+
+ #bill-payments
+ {
+    display: none;
+}
+ #beneficiary-management
+ {
+    display: none;
+}
+ #currency-exchange
+ {
+    display: none;
+}
+ #transaction-filters
+ {
+    display: none;
+}
+ #Send_money
+ {
+    display: none;
+}
+ #budget-tracker
+ {
+    display: none;
+}
+ #branch-locator
+{
+    display: none;
+}
+
+
+ #Save_new
+{
+    display: none;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dots-button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.dots-button:focus {
+    outline: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f2f2f2;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+input
+{
+
+    border-radius: 20px;
+}
+.log 
+{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: hsla(0, 0%, 89%, 0.808);
+    align-items: center;
+    border: 1px solid #696969; 
+    box-shadow: 0 10px 20px rgb(125, 123, 123); 
+    width: 300px;
+}
+.mid
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; 
+}
+
+header,footer
+{
+display: flex;
+justify-content: end;
+border: 1px solid rgb(231, 231, 231);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+body
+{/*
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    height: 100vh;
+    */
+    background-image: url('img/5.jpeg'); /* Replace 'background-image.jpg' with your image file */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fixed background while scrolling */
+
+
+}
+ul, li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 1em;
+    padding: 0;
+    }
+
+#sub,#sub1
+{
+    background-color: rgb(87, 196, 255);
+    border-radius: 5px; 
+    height: 29px;
+}
+#sub:hover,#sub1:hover
+{
+    background-color: rgb(234, 5, 24);
+    border-radius: 5px; 
+    
+}
+
+.div1
+{
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+padding: 10px;
+border-width: 1px;
+border-style: solid;
+border-radius: 10px;
+border-color: rgb(118, 118, 118);
+margin: 5px;
+min-height: 100vh;
+
+}
+.div2
+{
+    
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(118, 118, 118);
+    margin: 5px;
+    
+
+    }
+
+.mi
+{
+    display: flex;
+    flex-grow: 1;
+
+}
+.logo
+{
+    /*margin-left: 90px;*/
+    justify-content: center;
+}
+
+.footer
+{
+margin: 0%;
+}
+
+
+header {
+    background-color: #0074cc;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+nav {
+    background-color: #0074cc;
+    color: #fff;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/*start of page one*/
+
+.notifications-section {
+    /*background-color: #fff;*/
+    background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fixed background while scrolling */
+border: 1px solid #ccc;
+padding: 2rem;
+margin: 2rem 0;
+width: 250px;
+
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+
+.notifications-section h2 {
+color: #0074cc;
+}
+
+.notifications-section p {
+margin: 0.5rem 0;
+}
+
+/* Style for the notifications list */
+.notifications-list {
+list-style-type: none;
+padding: 0;
+}
+
+.notifications-list li {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 1rem 0;
+}
+
+/* Style for notification messages */
+.notifications-list p {
+margin: 0;
+}
+
+/* Style for notification timestamps */
+.notification-time {
+color: #999;
+font-size: 0.8rem;
+}
+
+.account-details-section {
+    /*background-color: #fff;*/
+    background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.account-details-section h2 {
+    color: #0074cc;
+}
+
+.account-details-section p {
+    margin: 0.5rem 0;
+}
+
+/* Add styles for the contact section */
+.contact-section {
+        /*background-color: #fff;*/
+        background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+
+.customer-support-section h2 {
+    color: #0074cc;
+}
+
+.customer-support-section p {
+    margin: 1rem 0;
+}
+
+/* Styles for contact information */
+.contact-info {
+    width: 50%;
+    float: left;
+}
+
+.contact-info h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+}
+
+.contact-info a {
+    color: #0074cc;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for the contact form */
+.contact-form {
+    width: 50%;
+    float: right;
+}
+
+.contact-form h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form form input[type="text"],
+.contact-form form input[type="email"],
+.contact-form form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.contact-form form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+.contact-form form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+.customer-support-section {
+           /*background-color: #fff;*/
+           background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+           background-size: cover; /* Cover the entire viewport */
+           background-position: center; /* Center the image */
+           background-repeat: no-repeat; /* Do not repeat the image */
+           background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.customer-support-section h2 {
+    color: #0074cc;
+}
+
+.customer-support-section p {
+    margin: 1rem 0;
+}
+/*End of page one*/
+
+
+main {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+h2, h3 {
+    color: #0074cc;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.date {
+    font-weight: bold;
+    color: #333;
+}
+
+footer {
+    background-color: #0074cc;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+/* Add styles for the profile section */
+.profile-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.profile-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for profile form input elements */
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for profile form submit button */
+form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+/* Add styles for the password change section */
+.password-change-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.password-change-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for password change form input elements */
+form input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for password change form submit button */
+form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+/* Add styles for the account details section */
+
+/* Add styles for the transaction filters section */
+.transaction-filters-section {
+        /*background-color: #fff;*/
+        background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.transaction-filters-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the transaction filters section */
+#transaction-filters-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#transaction-filters-form input[type="date"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Apply Filters" button */
+#transaction-filters-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#transaction-filters-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Add styles for the Logout button */
+.logout-button {
+    text-align: center;
+}
+
+#logout {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+#logout:hover {
+    background-color: #0054a0;
+    text-decoration: none;
+}
+
+/* Add styles for the Help and FAQs section */
+.help-faqs-section {
+        /*background-color: #fff;*/
+        background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.help-faqs-section h2 {
+    color: #0074cc;
+}
+
+.help-faqs-section p {
+    margin: 0.5rem 0;
+}
+
+/* Style for the FAQs list */
+.faqs-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.faqs-list li {
+    margin: 2rem 0;
+}
+
+/* Style for FAQ item headings */
+.faqs-list h3 {
+    color: #0074cc;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Style for email link within FAQ items */
+.faqs-list a {
+    color: #0074cc;
+    text-decoration: none;
+}
+
+/* Hover effect for email link within FAQ items */
+.faqs-list a:hover {
+    text-decoration: underline;
+}
+/* Add styles for the Statements and Documents section */
+.statements-documents-section {
+        /*background-color: #fff;*/
+        background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.statements-documents-section h2 {
+    color: #0074cc;
+}
+
+.statements-documents-section p {
+    margin: 0.5rem 0;
+}
+
+/* Style for the documents list */
+.documents-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.documents-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+/* Style for document links */
+.documents-list a {
+    color: #0074cc;
+    text-decoration: none;
+}
+
+/* Hover effect for document links */
+.documents-list a:hover {
+    text-decoration: underline;
+}
+
+/* Style for download links */
+.documents-list span {
+    color: #0074cc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Hover effect for download links */
+.documents-list span:hover {
+    text-decoration: none;
+}
+
+
+/* Add styles for the Transfer Funds section */
+.transfer-funds-section {
+       /*background-color: #fff;*/
+       background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+       background-size: cover; /* Cover the entire viewport */
+       background-position: center; /* Center the image */
+       background-repeat: no-repeat; /* Do not repeat the image */
+       background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.transfer-funds-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the transfer funds section */
+#transfer-funds-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#transfer-funds-form select,
+#transfer-funds-form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Transfer Funds" button */
+#transfer-funds-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#transfer-funds-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+/* Add styles for the Bill Payments section */
+.bill-payments-section {
+        /*background-color: #fff;*/
+        background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.bill-payments-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the bill payments section */
+#bill-payments-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#bill-payments-form select,
+#bill-payments-form input[type="number"],
+#bill-payments-form input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Pay Bill" button */
+#bill-payments-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#bill-payments-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+/* Add styles for the Transaction History section */
+.transaction-history-section {
+        /*background-color: #fff;*/
+        background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.transaction-history-section h2 {
+    color: #0074cc;
+}
+
+/* Style for the transaction history table */
+#transaction-history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#transaction-history-table th, #transaction-history-table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+/* Style for table header row */
+#transaction-history-table thead tr {
+    background-color: #0074cc;
+    color: #fff;
+}
+
+/* Style for alternating rows in the table */
+#transaction-history-table tbody tr:nth-child(odd) {
+    background-color: #f4f4f4;
+}
+
+/* Style for negative transaction amounts (expenses) */
+#transaction-history-table tbody td:nth-child(3):not([data-amount="positive"]) {
+    color: #d9534f; /* Red for expenses */
+}
+
+/* Style for positive transaction amounts (income) */
+#transaction-history-table tbody td:nth-child(3)[data-amount="positive"] {
+    color: #5cb85c; /* Green for income */
+}
+/* Add styles for the Loan Application section */
+.loan-application-section {
+        /*background-color: #fff;*/
+        background-image: url('img/bac2.jpeg'); /* Replace 'background-image.jpg' with your image file */
+        background-size: cover; /* Cover the entire viewport */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-attachment: fixed; /* Fixed background while scrolling */
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.loan-application-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the loan application section */
+#loan-application-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#loan-application-form select,
+#loan-application-form input[type="number"],
+#loan-application-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Submit Application" button */
+#loan-application-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#loan-application-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+/* Add styles for the Savings Goals section */
+.savings-goals-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.savings-goals-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the savings goals section */
+#savings-goals-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#savings-goals-form input[type="text"],
+#savings-goals-form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Set Goal" button */
+#savings-goals-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#savings-goals-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Styles for the savings goals list */
+.savings-goals-list {
+    margin-top: 2rem;
+}
+
+.savings-goals-list h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.savings-goals-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.savings-goals-list li {
+    margin: 0.5rem 0;
+}
+
+/* Style for completed savings goals */
+.savings-goals-list .completed {
+    color: #5cb85c; /* Green for completed goals */
+}
+/* Add styles for the Currency Exchange section */
+.currency-exchange-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.currency-exchange-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the currency exchange section */
+#currency-exchange-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#currency-exchange-form select,
+#currency-exchange-form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Convert Currency" button */
+#currency-exchange-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#currency-exchange-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Styles for the conversion result */
+.conversion-result {
+    margin-top: 2rem;
+}
+
+.conversion-result h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.conversion-result p {
+    font-size: 1.2rem;
+}
+/* Add styles for the Credit Card Management section */
+.credit-card-management-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.credit-card-management-section h2 {
+    color: #0074cc;
+}
+
+/* Styles for the credit card list */
+.credit-card-list {
+    width: 50%;
+    float: left;
+}
+
+.credit-card-list h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.credit-card-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.credit-card-list li {
+    margin: 1rem 0;
+}
+
+/* Styles for credit card actions */
+.credit-card-actions {
+    width: 50%;
+    float: right;
+}
+
+.credit-card-actions h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.credit-card-actions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.credit-card-actions li {
+    margin: 1rem 0;
+}
+
+/* Style for credit card action links */
+.credit-card-actions a {
+    color: #0074cc;
+    text-decoration: none;
+}
+
+/* Hover effect for credit card action links */
+.credit-card-actions a:hover {
+    text-decoration: underline;
+}
+/* Add styles for the Budget Tracker section */
+.budget-tracker-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.budget-tracker-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the budget tracker section */
+#budget-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#budget-form select,
+#budget-form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Set Budget" button */
+#budget-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#budget-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Styles for the budget list */
+.budget-list {
+    margin-top: 2rem;
+}
+
+.budget-list h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.budget-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.budget-list li {
+    margin: 1rem 0;
+}
+
+/* Style for budget action links */
+.budget-list a {
+    color: #0074cc;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Hover effect for budget action links */
+.budget-list a:hover {
+    text-decoration: underline;
+}
+/* Add styles for the Financial Tips and Articles section */
+.financial-tips-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.financial-tips-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for individual articles */
+.article {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.article h3 {
+    color: #0074cc;
+}
+
+.article p {
+    margin: 1rem 0;
+}
+
+/* Style for article read more links */
+.article a {
+    color: #0074cc;
+    text-decoration: none;
+}
+
+/* Hover effect for read more links */
+.article a:hover {
+    text-decoration: underline;
+}
+
+/* Add styles for the Credit Score Checker section */
+.credit-score-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.credit-score-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the credit score checker section */
+#credit-score-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#credit-score-form input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Check My Credit Score" button */
+#credit-score-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#credit-score-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Styles for the credit score result */
+.credit-score-result {
+    margin-top: 2rem;
+}
+
+.credit-score-result h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.credit-score-result p {
+    font-size: 1.2rem;
+}
+
+/* Add styles for the Financial Calculator section */
+.financial-calculator-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.financial-calculator-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for individual calculators */
+.calculator {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.calculator h3 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the financial calculator section */
+.calculator form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.calculator form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the calculator submit buttons */
+.calculator form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+.calculator form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Styles for the calculator result sections */
+.calculator-result {
+    margin-top: 2rem;
+}
+
+.calculator-result h4 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+/* Add styles for the Branch Locator section */
+.branch-locator-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.branch-locator-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for form input elements in the branch locator section */
+#branch-locator-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#branch-locator-form input[type="text"],
+#branch-locator-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Find Nearest Location" button */
+#branch-locator-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#branch-locator-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Styles for the location results */
+.location-results {
+    margin-top: 2rem;
+}
+
+.location-results h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.location-results ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.location-results li {
+    margin: 1rem 0;
+}
+/* Add styles for the Customer Support section */
+
+
+/* Styles for contact information */
+.contact-info {
+    width: 50%;
+    float: left;
+}
+
+.contact-info h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+}
+
+.contact-info a {
+    color: #0074cc;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for the contact form */
+.contact-form {
+    width: 50%;
+    float: right;
+}
+
+.contact-form h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form form input[type="text"],
+.contact-form form input[type="email"],
+.contact-form form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.contact-form form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+.contact-form form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+/* Add styles for the Financial News section */
+.financial-news-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.financial-news-section h2 {
+    color: #0074cc;
+}
+
+/* Improved styling for individual news articles */
+.news-article {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.news-article h3 {
+    color: #0074cc;
+}
+
+.news-article p {
+    margin: 1rem 0;
+}
+
+/* Style for news article read more links */
+.news-article a {
+    color: #0074cc;
+    text-decoration: none;
+}
+
+/* Hover effect for read more links */
+.news-article a:hover {
+    text-decoration: underline;
+}
+/* Add styles for the Currency Exchange section */
+.currency-exchange-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.currency-exchange-section h2 {
+    color: #0074cc;
+}
+
+/* Styles for exchange rates table */
+.exchange-rates h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.exchange-rates table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.exchange-rates table th,
+.exchange-rates table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+/* Styles for the currency converter */
+.currency-converter h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.currency-converter form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.currency-converter form select,
+.currency-converter form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.currency-converter form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+.currency-converter form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Styles for the conversion result */
+.conversion-result h4 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+/* Add styles for the Credit Card Application section */
+.credit-card-application-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.credit-card-application-section h2 {
+    color: #0074cc;
+}
+
+.credit-card-application-section p {
+    margin: 1rem 0;
+}
+
+/* Improved styling for the credit card application form */
+.credit-card-application-form form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.credit-card-application-form form input[type="text"],
+.credit-card-application-form form input[type="email"],
+.credit-card-application-form form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Submit Application" button */
+.credit-card-application-form form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+.credit-card-application-form form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Add styles for the User Ratings and Reviews section */
+.user-ratings-reviews-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.user-ratings-reviews-section h2 {
+    color: #0074cc;
+}
+
+.user-ratings-reviews-section p {
+    margin: 1rem 0;
+}
+
+/* Improved styling for the user review form */
+.user-review-form form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.user-review-form form input[type="number"],
+.user-review-form form textarea,
+.user-review-form form input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Updated styling for the "Submit Review" button */
+.user-review-form form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+.user-review-form form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+
+/* Styles for user reviews */
+.user-reviews h3 {
+    color: #0074cc;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.user-review {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.review-rating {
+    margin-bottom: 0.5rem;
+}
+
+.user-review p {
+    margin: 0.5rem 0;
+}
+
+

@@ -1,0 +1,125 @@
+
+             /*BILL PAYMENT*/
+            /*BILL PAYMENT*/
+.bill-payments-section {
+
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.bill-payments-section h2 {
+    color: #0074cc;
+}
+
+#bill-payments-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#bill-payments-form select,
+#bill-payments-form input[type="number"],
+#bill-payments-form input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#bill-payments-form input[type="submit"] {
+    background-color: #0074cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+#bill-payments-form input[type="submit"]:hover {
+    background-color: #0054a0;
+}
+           
+                       /*BILL PAYMENT*/
+                       /*BILL PAYMENT*/
+           
+
+
+                /*PROFILE */
+                /*PROFILE */
+.account-details-section {
+
+    border: 1px solid #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.account-details-section h2 {
+    color: #0074cc;
+}
+
+.account-details-section p {
+    margin: 0.5rem 0;
+}
+
+                /*PROFILE */
+                /*PROFILE */
+
+
+
+
+
+                 /*NOTIFICATIONS*/
+                 /*NOTIFICATIONS*/
+ 
+.notifications-section {
+
+border: 1px solid #ccc;
+padding: 2rem;
+margin: 2rem 0;
+width: 250px;
+
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+
+.notifications-section h2 {
+color: #0074cc;
+}
+
+.notifications-section p {
+margin: 0.5rem 0;
+}
+
+.notifications-list {
+list-style-type: none;
+padding: 0;
+}
+
+.notifications-list li {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 1rem 0;
+}
+
+.notifications-list p {
+margin: 0;
+}
+
+.notification-time {
+color: #999;
+font-size: 0.8rem;
+}
+                
+                    /*NOTIFICATIONS*/
+                    /*NOTIFICATIONS*/
+
