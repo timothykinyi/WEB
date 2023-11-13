@@ -255,27 +255,32 @@ Access our network of branches and ATMs wherever you are, ensuring seamless bank
 <h1>Budget Tracker:</h1>
 <img class = "imgs" src="tmg/bt.jpeg" alt="Image 3">
 <p>
-<strong>Financial Planning:</strong><br> Personalized strategies to help you reach your financial goals.
-<br><br><strong>Retirement Accounts:</strong><br> Plan for your future with Individual Retirement Accounts (IRAs).
-<br><br><strong>Investment Portfolios:</strong><br> Diversify your investments with our expert guidance.
+<strong>Smart Budgeting Made Simple:</strong><br>
+Take control of your finances with our intuitive budget tracker, making smart money management effortless.
+<br><br><strong>Real-Time Insights:</strong><br>
+Stay on top of your spending and savings with real-time insights from our user-friendly budget tracking tool.
+
 </p>
 </div>
 <div class = "show">
 <h1>Currency exchange:</h1>
 <img class = "imgs" src="tmg/cr.jpeg" alt="Image 3">
 <p>
-<strong>Financial Planning:</strong><br> Personalized strategies to help you reach your financial goals.
-<br><br><strong>Retirement Accounts:</strong><br> Plan for your future with Individual Retirement Accounts (IRAs).
-<br><br><strong>Investment Portfolios:</strong><br> Diversify your investments with our expert guidance.
+<strong>Effortless Currency Transfers:</strong><br>
+Seamlessly transfer currency globally with our hassle-free platform, ensuring swift and secure transactions.
+<br><br><strong>Global Financial Freedom:</strong><br>
+Experience the ease of managing international transactions, making cross-border currency transfers convenient and reliable.
 </p>
 </div>
 <div class = "show">
 <h1>Beneficiarys:</h1>
 <img class = "imgs" src="tmg/bn.jpeg" alt="Image 3">
 <p>
-<strong>Financial Planning:</strong><br> Personalized strategies to help you reach your financial goals.
-<br><br><strong>Retirement Accounts:</strong><br> Plan for your future with Individual Retirement Accounts (IRAs).
-<br><br><strong>Investment Portfolios:</strong><br> Diversify your investments with our expert guidance.
+<strong>Efficient Beneficiary Management:</strong><br>
+Streamline and organize your beneficiaries effortlessly, ensuring efficient management for your financial plans.
+<br><br><strong>Secure and Accessible:</strong><br>
+Maintain the security of your assets while easily accessing and managing your beneficiaries for added peace of mind.
+
 </p>
 </div>
 </div>
