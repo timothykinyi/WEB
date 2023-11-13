@@ -34,15 +34,6 @@
 
 <div class="slideshow-container">
         <div class="mySlides">
-            <img class = "img" src="tmg/6.png" alt="Image 1">
-        </div>
-        <div class="mySlides">
-            <img class = "img" src="tmg/15.webp" alt="Image 2">
-        </div>
-        <div class="mySlides">
-            <img class = "img" src="tmg/14.jpeg" alt="Image 3">
-        </div>
-        <div class="mySlides">
             <img class = "img" src="tmg/16.jpg" alt="Image 3">
         </div>
         <div class="mySlides">
@@ -50,6 +41,15 @@
         </div>
         <div class="mySlides">
             <img class = "img" src="tmg/18.jpg" alt="Image 3">
+        </div>
+        <div class="mySlides">
+            <img class = "img" src="tmg/32.jpeg" alt="Image 1">
+        </div>
+        <div class="mySlides">
+            <img class = "img" src="tmg/15.webp" alt="Image 2">
+        </div>
+        <div class="mySlides">
+            <img class = "img" src="tmg/31.png" alt="Image 3">
         </div>
 </div>
 

@@ -30,8 +30,6 @@ require "functions.php";
         <a href="others.php"><strong>Contact</strong></a>
         </nav>
         <span class = "span">
-        <button id="settings" class= "aa">&#128276;</button>
-        <button id="settings" class= "aa">&#9881;</button>
         <button class= "ab"><a href="logout.php">Log out</a></button>
         </span>
     </div>

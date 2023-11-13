@@ -29,9 +29,29 @@
         </nav>
         <span class = "span">
         
+        
         <button id="notifications_b" class= "aa">&#128276;</button>
+        
+        <span id="notificationCounter"><?php echo getNotificationCount(); ?></span>
+        <script>updateNotificationCount(<?php  echo getNotificationCount(); ?>);
+            function updateNotificationCount(count) 
+                {
+                const counterElement = document.getElementById("notificationCounter");
+                counterElement.textContent = count;
+                counterElement.style.display = count > 0 ? 'block' : 'none';
+                }
+        </script>
+        <?php
+        function getNotificationCount() 
+        {
+            $counter=0;
+            include "notificationdisp.php";
+            if ($nresult->num_rows > 0)
+            { while ($row = $nresult->fetch_assoc()) {$counter ++;  }}
+            return $counter;
+        }
+        ?>
         <button id="settings" class= "aa">&#9881;</button>
-
         <button class= "ab"><a href="logout.php">Log out</a></button>
         </span>
     </div>
@@ -55,8 +75,6 @@
         <input type="text" id="account-number" name="account-number" required><br><br>
         <label for="amount">Amount:</label>
         <input type="number" step="1" id="amount" name="amount" required><br><br>
-        <label for="account-number">Password:</label>
-        <input type="Password" id="Password" name="Password" required><br><br>
         <?php session_start(); $_SESSION['transaction'] = 'sending'; ?>
         <input type="submit" value="Send Money">
         
@@ -72,7 +90,7 @@
     <h2>Bill Payments</h2>
     <form id="bill-payments-form" method = "POST" action = "bill _payer.php">
         <label for="payee">Select Payee:</label>
-        <select id="payee" name="payee">
+        <select id="payee" name="paye">
         <?php
         include "dataretreval.php";
         while ($row = $result->fetch_assoc()) {

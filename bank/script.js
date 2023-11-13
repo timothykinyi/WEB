@@ -59,4 +59,11 @@ document.getElementById("customer_support_b").addEventListener("click", function
 
 
 
+function updateNotificationCount(count) 
+{
+  const counterElement = document.getElementById("notificationCounter");
+  counterElement.textContent = count;
+  counterElement.style.display = count > 0 ? 'block' : 'none';
+}
+
 

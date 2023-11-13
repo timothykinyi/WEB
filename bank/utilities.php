@@ -31,8 +31,6 @@ require "functions.php";
         <a href="others.php"><strong>Contact</strong></a>
         </nav>
         <span class = "span">
-        <button id="settings" class= "aa">&#128276;</button>
-        <button id="settings" class= "aa">&#9881;</button>
         <button class= "ab"><a href="logout.php">Log out</a></button>
         </span>
     </div>
@@ -52,7 +50,7 @@ require "functions.php";
 
 <section class="branch-locator-section">
     <h2>Branch Locator</h2>
-    <form id="branch-locator-form">
+    <form id="branch-locator-form" action ="locator.php" methos = "post">
         <label for="location">Enter Your Location:</label>
         <input type="text" id="location" name="location" required><br><br>
         <label for="service-type">Select Service Type:</label>
@@ -64,17 +62,23 @@ require "functions.php";
     </form>
     <div class="location-results">
         <h3>Nearest Locations:</h3>
-        <ul><!--
-            <li>
-                <p><strong>Name:</strong> Main Branch</p>
-                <p><strong>Address:</strong> 123 Main Street, City</p>
-            </li>
-            <li>
-                <p><strong>Name:</strong> ATM #1</p>
-                <p><strong>Address:</strong> 456 ATM Street, City</p>
-            </li>
-             Add more branch or ATM locations as needed -->
+        <ul>
+        <?php
+            include "locator.php";
+            if ($result->num_rows > 0)
+            {
+            while ($row = $result->fetch_assoc()) {
+                 echo '
+                 <li>
+                    <p><strong>Location:</strong>'. $row['location'] .'</p>
+                    <p><strong>Address:</strong>'. $row['al'] .'</p>
+                </li>
+                ';
+            }
+            }else{ echo "<p> no branches or atm in that location <p>";}
+            ?>
         </ul>
+
     </div>
 </section>
 </div>

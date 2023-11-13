@@ -50,14 +50,15 @@
            
 
 
+
                 /*PROFILE */
                 /*PROFILE */
 .account-details-section {
 
     border: 1px solid #ccc;
+    align-items: center;
     padding: 2rem;
     margin: 2rem 0;
-    
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
@@ -70,9 +71,15 @@
     margin: 0.5rem 0;
 }
 
-                /*PROFILE */
-                /*PROFILE */
+.account-details-section span {
+   font-weight: bold;
+    font-size: larger;
+}
 
+
+
+                /*PROFILE */
+                /*PROFILE */
 
 
 

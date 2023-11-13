@@ -422,6 +422,7 @@ height: 100%;
 }
 .up-arrow-button  a{
     color: #fff;
+
     text-decoration: none;
 
 }
@@ -443,4 +444,19 @@ height: 100%;
     font-size: 16px;
     cursor: pointer;
     
+}
+
+#notifications_b {
+position: relative;
+}
+
+#notificationCounter {
+position: absolute;
+top: 2px;
+right: 130px;
+background-color: red;
+color: white;
+border-radius: 50%;
+padding: 5px 8px;
+font-size: 12px;
 }

@@ -15,6 +15,7 @@
 <?php
 require "functions.php";
 ?> 
+
 </head>
 <body>
 <header>
@@ -24,9 +25,29 @@ require "functions.php";
         </span>
 
         <span class = "span">
-        <button id="settings" class= "aa">&#128276;</button>
+        <button id="notifications_b" class= "aa">&#128276;</button>
+        
+        <span id="notificationCounter"><?php echo getNotificationCount(); ?></span>
+        <script>updateNotificationCount(<?php  echo getNotificationCount(); ?>);
+            function updateNotificationCount(count) 
+                {
+                const counterElement = document.getElementById("notificationCounter");
+                counterElement.textContent = count;
+                counterElement.style.display = count > 0 ? 'block' : 'none';
+                }
+        </script>
+        <?php
+        function getNotificationCount() 
+        {
+            $counter=0;
+            include "notificationdisp.php";
+            if ($nresult->num_rows > 0)
+            { while ($row = $nresult->fetch_assoc()) {$counter ++;  }}
+            return $counter;
+        }
+        ?>
         <button id="settings" class= "aa">&#9881;</button>
-        <button class= "ab"><a href="logout.php">Log out</a></button>
+        <button class= "ab"><a href="agentlogin.php">Log out</a></button>
         </span>
     </div>
 </header>
@@ -34,9 +55,6 @@ require "functions.php";
 <main class="mi">
     <div class ="div1">
     <div class="slideshow-container">
-        <div class="mySlides">
-            <img class = "img" src="tmg/6.png" alt="Image 1">
-        </div>
         <div class="mySlides">
             <img class = "img" src="tmg/15.webp" alt="Image 2">
         </div>
@@ -70,16 +88,8 @@ require "functions.php";
     </div>
 
     <div class="div2">
-        <section class="account-details-section">
-            <h2>Account Details</h2>
-            <img height='100px' src=img/defprofile.jpeg>
-            <p>Agent no: <span id="username"><?php session_start();  echo $_SESSION['agent_no']; ?></span></p>
-            <p>Account Number: <span id="account-number"><?php   echo $_SESSION['account_no']; ?></span></p>
-            <p>Account balance: <span id="balance"><?php  echo $_SESSION['balance']; ?></span></p>
-            <p>Account Status: <span id="account-status">Active</span></p>
-        </section>
 
-
+    <div id ="notifications">
         <section class="notifications-section">
             <h2>Notifications</h2>
             <p>Stay informed with important updates and alerts from My Banking:</p>
@@ -103,6 +113,17 @@ require "functions.php";
             <button type="submit" name="submitButton">Mark as read</button>
             </form>
         </section>
+ </div>
+
+        <section class="account-details-section">
+        <img class ="logo" src="tmg/24.png" alt="company logo" height="100px">
+            <h2>Account Details</h2>
+            <p>Agent no: <span id="username"><?php session_start();  echo $_SESSION['agent_no']; ?></span></p>
+            <p>Account Number: <span id="account-number"><?php   echo $_SESSION['account_no']; ?></span></p>
+            <p>Account balance: <span id="balance"><?php  echo $_SESSION['balance']; ?></span></p>
+            <p>Account Status: <span id="account-status">Active</span></p>
+        </section>
+
     </div>
  </main>
 </main>
@@ -144,7 +165,7 @@ require "functions.php";
             </ul>
         </div>
     </div>
-<script src="accact.js"></script>
+<script src="script.js"></script>
 <script src ="home.js"></script>
 <?php include "footer.php"; ?> 
 </body>
