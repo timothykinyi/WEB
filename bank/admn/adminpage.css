@@ -1,0 +1,102 @@
+#credit_card_service ,#loan_service ,#customer_service ,#users_service 
+{
+  
+  display: none;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.customer_service_info
+{
+  display: flex;
+}
+#blank ,#bank_user, #bank_users_no
+{
+  display: none;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: aliceblue;
+}
+
+main
+{
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* act */
+
+.user-management-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#userActions,
+#activityLogs {
+  margin-top: 20px;
+}
+
+#activityLogs ul {
+  list-style: none;
+  padding: 0;
+}
+
+#activityLogs li {
+  margin-bottom: 10px;
+}
+  /*act*/
+
+  
+ /*management*/
+  .account-management-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #accountActions {
+    margin-top: 20px;
+  }
+   /*management*/
+
+
+
+      /*settings*/
+  .system-configuration-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #configurationActions,
+  #versionControl {
+    margin-top: 20px;
+  }
+
+      /*settings*/
+
+
+          /*customer_service_info*/
+          /*customer_service_info*/
+#customer_service_info
+{
+background-color: rgb(171, 201, 227);
+ 
+}
+
+
+          /*customer_service_info*/
+          /*customer_service_info*/

@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #header {
+    background-color: #35bfff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  #container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #adminPanel {
+    text-align: center;
+    color: blue; /* Change text color to blue */
+  }
+  
+  #toggleButtons button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin: 5px;
+  }
+  
+  #toggleButtons button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Add more styling for your admin panel content as needed */
+  

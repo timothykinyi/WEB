@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f3f3;
+}
+  #header {
+    background-color: #35bfff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  #container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #adminPanel {
+    text-align: center;
+    color: blue; /* Change text color to blue */
+  }
+  
+  #toggleButtons button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin: 5px;
+  }
+  
+  #toggleButtons button:hover {
+    background-color: #45a049;
+  }
+
+  #adminTable,
+  #charts,
+  #adminhealthChart
+  {
+    display: none;
+  }
+
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  justify-items: center;
+}
+
+.chart-container {
+  text-align: center;
+}
+
+canvas {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.legend-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.legend-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#healthChartContainer {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+}
+
+  .metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .metric {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
