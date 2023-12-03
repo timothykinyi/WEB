@@ -1,23 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>System Health Dashboard</title>
-  <!-- Link to Chart.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<?php
+// Security Headers Check
+function checkSecurityHeaders() {
+    $headers = get_headers("http://example.com", 1);
 
-  <div class="container">
-    <h1>System Health Dashboard</h1>
-    <div class="chart-container">
-    <canvas id="healthChart"></canvas>
-    </div>
-    <div class="legend-container" id="legendContainer"></div>
-  </div>
+    $requiredHeaders = [
+        'Strict-Transport-Security',
+        'X-Content-Type-Options',
+        'X-Frame-Options',
+        'Content-Security-Policy'
+    ];
 
-  <script src="script.js"></script>
-</body>
-</html>
+    $missingHeaders = array_diff($requiredHeaders, array_keys($headers));
+
+    if (empty($missingHeaders)) {
+        echo "All required security headers are present.\n";
+    } else {
+        echo "Missing security headers: " . implode(', ', $missingHeaders) . "\n";
+    }
+}
+
+// Call the function
+checkSecurityHeaders();
+?>

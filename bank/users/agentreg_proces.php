@@ -1,10 +1,11 @@
 <?php
 $server = "localhost";
 $username = "root";
-$password = "";
+$password = ""; 
 $database = "bank";
 $connection = new mysqli($server, $username, $password, $database);
-if ($connection -> connect_error){echo ("connection failed " .$connection -> connect_error);}
+if ($connection -> connect_error){    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: aggentregistration.php?error=$result");}
 
 $first_name = $_POST['first_name'];
 $second_name = $_POST['second_name'];
@@ -13,6 +14,10 @@ $password = $_POST['password'];
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+$strongPasswordPattern = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/';
+
+if (preg_match($strongPasswordPattern, $password)) {
+    
 $file=fopen("agentno.txt","r") or exit("Unable to open file in read!");
 $agent_no = fgets($file);
 $agent_no ++;
@@ -28,9 +33,10 @@ fclose($file);
 $file1=fopen("agentaccno.txt","w") or exit("Unable to open file in write!");
 fwrite($file1, $account_number);
 fclose($file1);
-
-$sql = "INSERT INTO agents  (first_name, second_name, agent_no, email, password, account_no, status) 
-        VALUES ('$first_name', '$second_name', '$agent_no', '$email', '$hashedPassword', '$account_number','Active')";
+$authCode = generateAuthCode();
+$hashedauthCode = password_hash($authCode, PASSWORD_DEFAULT);
+$sql = "INSERT INTO agents  (first_name, second_name, agent_no, email, password, account_no, status , authcode) 
+        VALUES ('$first_name', '$second_name', '$agent_no', '$email', '$hashedPassword', '$account_number','Active' ,'$hashedauthCode')";
 
 if ($connection->query($sql) === true) {
         $servercreated = "localhost";
@@ -73,26 +79,41 @@ if ($connection->query($sql) === true) {
                                 $connection_created2 = new mysqli($servercreated2, $usernamecreated2, $passwordnew2, $database2);
                                 $database_table2 = "INSERT INTO transactions (transactions, balance) VALUE('start','0')";
                                 if ($connection_created2->query($database_table2) === true) {
-                                $result = "Registration successful.<br> <a href='agentlogin.php'>Login</a>";
+                                $result = "Registration successful.<br> your recovery token is: <br> <strong style='color: red;'>".$authCode."</strong><br>Save it securely this is the only way you can recover your account incase you forget your password. <br> <a href='agentlogin.php'>Login</a>";
                                 header("Location: pass.php?error=$result");
                                 }
                                 else {
-                                    echo "Error3: " . $database_table2 . "<br>" . $connection_created1->error;
+                                    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                    header("Location: aggentregistration.php?error=$result");
                                 }
                         }
                             else {
-                                echo "Error2: " . $database_table . "<br>" . $connection_created1->error;
+                                $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                header("Location: aggentregistration.php?error=$result");
                         }
                 }else {
-                    echo "Error11: " . $database_table11 . "<br>" . $connection->error;
+                    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                    header("Location: aggentregistration.php?error=$result");
                 }
 
                 } else {
-                echo "Error: " . $database_new . "<br>" . $connection_created->error;
+                    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                    header("Location: aggentregistration.php?error=$result");
                 }
 } else {
-    echo "Error: " . $sql . "<br>" . $connection->error;
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: aggentregistration.php?error=$result");
+}
+
+} else {
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><p>Password should be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit.</p>";;
+    header("Location: aggentregistration.php?error=$result");
 }
 $connection->close();
 
+
+function generateAuthCode() {
+    $bytes = random_bytes(31); // 8 bytes = 64 bits
+    return bin2hex($bytes);
+}
 ?>

@@ -14,7 +14,8 @@ $password = "";
 $database = "bank";
 $conn = new mysqli($server, $username, $password, $database);
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+    header("Location: superadmin.php?error=$nres");
 }
 
 $email = $_POST["email"];
@@ -26,13 +27,15 @@ if ($result->num_rows > 0) {
         $account = $row['account_no'];
     }
 } else {
-    echo "email not found." . $email . "email not found.";
+    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><br>". $email . "email not found.";
+    header("Location: superadmin.php?error=$nres");
 }
 
 $db = new mysqli("localhost","root","",$account);
 if ($db->connect_error)
 {
-    die("Connection failed: " .$db->connect_error );
+    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+    header("Location: superadmin.php?error=$nres");
 }
 
 $message1 =$_POST["message"];
@@ -41,22 +44,28 @@ $queryz1 = "INSERT INTO `notifications`(messages) VALUE(\"<br><strong>Customer_S
     if ($db->query($queryz1)=== true) {
         $connection2 = new mysqli("localhost", "root", "","bank");
         if ($connection2->connect_error)
-        { die("Connection failed: " .$connection2->connect_error ); }
+        {
+            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+            header("Location: superadmin.php?error=$nres");
+        }
         
         $sql = "UPDATE `Customer_Support` SET `status`='seen and replied' WHERE id = $id";
         $result = $connection2->query($sql);
         
         if ($result === true) 
             {
-                header("Location: superadmin.php");
+                $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Sent succesfully ";
+                header("Location: superadmin.php?error=$nres");
             }
             else {
-                echo "Error3: " . $sql . "<br>" . $connection2->error;
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
         $connection->close();
         }
         else {
-            echo "Error3: " . $dqueryz1 . "<br>" . $db->error;
+            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+            header("Location: superadmin.php?error=$nres");
         }
 }
 

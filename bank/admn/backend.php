@@ -1,116 +1,68 @@
 <?php
-function checkHttpStatus($url) {
-    $headers = get_headers($url);
-    $statusCode = intval(substr($headers[0], 9, 3));
-    return $statusCode;
+// Function to perform a basic HTTP check
+function performHTTPCheck($url) {
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    return $httpCode == 200;
 }
 
+// Function to perform a database check
+function performDatabaseCheck($host, $username, $password, $database) {
+    $mysqli = new mysqli($host, $username, $password, $database);
+    $isConnected = !$mysqli->connect_errno;
+    $mysqli->close();
 
-$adminlogin = "http://localhost:8081/bakerweb/WEB/bank/admn/adminlogin.php";
-$superadmin = "http://localhost:8081/bakerweb/WEB/bank/admn/superadmin.php";
-$adminindex = "http://localhost:8081/bakerweb/WEB/bank/admn/index.php";
-$home = "http://localhost:8081/bakerweb/WEB/bank/users/home.php";
-$userlogin = "http://localhost:8081/bakerweb/WEB/bank/users/index.php";
-$agentlogin = "http://localhost:8081/bakerweb/WEB/bank/users/agentlogin.php";
-$option = "http://localhost:8081/bakerweb/WEB/bank/users/option.php";
-$agentreg = "http://localhost:8081/bakerweb/WEB/bank/users/aggentregistration.php";
-$userreg = "http://localhost:8081/bakerweb/WEB/bank/users/registration.php";
-$profile = "http://localhost:8081/bakerweb/WEB/bank/users/profile.php";
-$accact = "http://localhost:8081/bakerweb/WEB/bank/users/accact.php";
-$utilities = "http://localhost:8081/bakerweb/WEB/bank/users/utilities.php";
-$others = "http://localhost:8081/bakerweb/WEB/bank/users/others.php";
-$agentpage = "http://localhost:8081/bakerweb/WEB/bank/users/agentpage.php";
-
-$active = 1;
-
-$status1 = checkHttpStatus($adminlogin);
-if ($status1 === 200) {
-    $active ++;
-} else {
-    
-}
-$status2 = checkHttpStatus($superadmin);
-if ($status2 === 200) {
-    $active ++;
-} else {
-    
-}
-$status3 = checkHttpStatus($adminindex);
-if ($status3 === 200) {
-    $active ++;
-} else {
-    
-}
-$status4 = checkHttpStatus($home);
-if ($status4 === 200) {
-    $active ++;
-} else {
-    
-}
-$status5 = checkHttpStatus($userlogin);
-if ($status5 === 200) {
-    $active ++;
-} else {
-    
-}
-$status6 = checkHttpStatus($agentlogin);
-if ($status6 === 200) {
-    $active ++;
-} else {
-    
-}
-$status7 = checkHttpStatus($option);
-if ($status7 === 200) {
-    $active ++;
-} else {
-    
-}
-$status8 = checkHttpStatus($agentreg);
-if ($status8 === 200) {
-    $active ++;
-} else {
-    
-}
-$status9 = checkHttpStatus($userreg);
-if ($status9 === 200) {
-    $active ++;
-} else {
-    
-}
-$statu10s = checkHttpStatus($profile);
-if ($status10 === 200) {
-    $active ++;
-} else {
-    
-}
-$status11 = checkHttpStatus($accact);
-if ($status11 === 200) {
-    $active ++;
-} else {
-    
-}
-$status12 = checkHttpStatus($utilities);
-if ($status12 === 200) {
-    $active ++;
-} else {
-    
-}
-$status13 = checkHttpStatus($others);
-if ($status13 === 200) {
-    $active ++;
-} else {
-    
-}
-$status14 = checkHttpStatus($agentpage);
-if ($status14 === 200) {
-    $active ++;
-} else {
-    
+    return $isConnected;
 }
 
+// Function to perform a security check
+function performSecurityCheck($url) {
+    $headers = get_headers($url, 1);
+    
+    // Check for HTTPS
+    $isSecure = isset($headers['Location']) && strpos($headers['Location'], 'https://') === 0;
 
+    // Check for security headers
+    $securityHeaders = ['Strict-Transport-Security', 'X-Content-Type-Options', 'X-Frame-Options', 'Content-Security-Policy'];
+    $missingSecurityHeaders = array_diff($securityHeaders, array_keys($headers));
 
-$systemhealth = (100/15) * $active;
-echo $systemhealth;
-echo "<br>" .$active;
+    return ['isSecure' => $isSecure, 'missingSecurityHeaders' => $missingSecurityHeaders];
+}
+
+// Perform health checks
+$adminlogin = performHTTPCheck('http://localhost:8081/bakerweb/WEB/bank/admn/adminlogin.php');
+$superadmin = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/admn/superadmin.php");
+$adminindex = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/admn/index.php");
+$home = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/home.php");
+$userlogin = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/index.php");
+$agentlogin =performHTTPCheck( "http://localhost:8081/bakerweb/WEB/bank/users/agentlogin.php");
+$option = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/option.php");
+$agentreg = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/aggentregistration.php");
+$userreg = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/registration.php");
+$profile =performHTTPCheck( "http://localhost:8081/bakerweb/WEB/bank/users/profile.php");
+$accact = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/accact.php");
+$utilities = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/utilities.php");
+$others = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/others.php");
+$agentpage = performHTTPCheck("http://localhost:8081/bakerweb/WEB/bank/users/agentpage.php");
+$httpCheckResult = performHTTPCheck('http://localhost:8081/bakerweb/WEB/bank/users/home.php');
+$databaseCheckResult = performDatabaseCheck('localhost', 'root', '', 'bank');
+$databaseCheckResult2 = performDatabaseCheck('localhost', 'root', '', 'THEBANK');
+$securityCheckResult = performSecurityCheck('http://localhost:8081/bakerweb/WEB/bank/users/home.php');
+
+// Calculate the overall health percentage
+$totalChecks = 16;
+$successfulChecks = ($httpCheckResult ? 1 : 0) + ($adminlogin ? 1 : 0) + ($agentlogin ? 1 : 0) +($agentreg ? 1 : 0) +
+                    ($superadmin ? 1 : 0) + ($option ? 1 : 0) +($profile ? 1 : 0) +
+                    ($adminindex ? 1 : 0) + ($accact ? 1 : 0) +($utilities ? 1 : 0) +
+                    ($home ? 1 : 0) + ($others ? 1 : 0) +($agentpage ? 1 : 0) +
+                    ($userlogin ? 1 : 0) + ($databaseCheckResult2 ? 1 : 0) + ($securityCheckResult['isSecure'] ? 1 : 0);
+
+$healthPercentage = ($successfulChecks / $totalChecks) * 100;
+
+echo round($healthPercentage, 2);
 ?>

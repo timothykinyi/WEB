@@ -17,7 +17,8 @@ $database = "bank";
 $conn = new mysqli($server, $username, $password, $database);
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><br>Failed try again";
+    header("Location: index.php?error=$res");
 }
 
 $username_email = $_POST["email/username"];
@@ -35,13 +36,15 @@ if ($result->num_rows > 0) {
         $status = $row['status'];
     }
 } else {
-    echo "No data found.";
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><br><strong>Login failed </strong><br>Check your user name and try again <br>If you don't have an account <a href='option.php'>register</a>";
+    header("Location: index.php?error=$res");
 }
 
 $conns = new mysqli("localhost", "root", "", $data);
 
 if ($conns->connect_error) {
-    die("Connection failed: " . $conns->connect_error);
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><br>Failed try again";
+    header("Location: index.php?error=$res");
 }
 $sql0 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
 $result0 = $conns->query($sql0);
@@ -82,13 +85,13 @@ if(($username === $username_email) && password_verify($password , $passwrd)) {
         
     }else
     { 
-        $res = "Login failed. <a href='index.php'>Try again</a>";
-        header("Location: error.php?error=$res");
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><br>Login failed. <a href='index.php'>Try again</a>";
+        header("Location: index.php?error=$res");
     }
     
 } else {
-    $res = "Login failed. <a href='index.php'>Try again</a>";
-    header("Location: error.php?error=$res");
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><br>Login failed. <a href='index.php'>Try again</a>";
+    header("Location: index.php?error=$res");
 }
 
 $conn->close();

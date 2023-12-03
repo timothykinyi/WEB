@@ -1,19 +1,20 @@
 <?php
-if (isset($_COOKIE['userlogin'])) {
-    $login = $_COOKIE['userlogin'];
-    if (isset($_COOKIE['account_no'])) {
-        $account_no = $_COOKIE['account_no'];
-        if ($login === $account_no) {
-
+    if (isset($_COOKIE['userlogin'])) {
+        $login = $_COOKIE['userlogin'];
+        if (isset($_COOKIE['account_no'])) {
+            $account_no = $_COOKIE['account_no'];
+            if ($login === $account_no) {
+                setcookie("account_no", $account_no, time() + 31536000, "/");
+                setcookie("userlogin", "$login", time() + 31536000, "/");
+            } else {
+                header("Location: index.php");
+            }
         } else {
             header("Location: index.php");
         }
     } else {
         header("Location: index.php");
     }
-} else {
-    header("Location: index.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,7 @@ if (isset($_COOKIE['userlogin'])) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-hJRmIKjzVcSDXXSxj6yAxU5l/9bKJkgXgDqs7cv0Sf8gJgP6kn4tgDReeI2U+Em" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap">
-
+<link rel="stylesheet" href="show.css">
 <link rel="stylesheet" href="utilities.css">
 <?php
 require "functions.php";
@@ -36,6 +37,17 @@ require "functions.php";
 
 </head>
 <body>
+<?php
+    if (isset($_GET["error"])) {
+        $result = $_GET["error"];
+        echo "<form><p class =  'note' > <button onclick ='out();'>x</button>$result</p></form>";
+    }
+    function out()
+    {
+        $result="";
+        header("Location: error.php?error=$result");
+    }
+?>
 <header>
     <div class="head">
         <span class = "span1">

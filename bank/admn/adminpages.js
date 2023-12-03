@@ -5,9 +5,11 @@ document.getElementById("adduser_b").addEventListener("click" , function()
     if(addusers.style.display === "none")
     {
         addusers.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "adduser");
     }else
     {
         addusers.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -17,9 +19,11 @@ document.getElementById("modifyuser_b").addEventListener("click" , function()
     if(modifyusers.style.display === "none")
     {
         modifyusers.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "modifyuser");
     }else
     {
         modifyusers.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -29,9 +33,11 @@ document.getElementById("customer_services_b").addEventListener("click" , functi
     if(customer_services.style.display === "none")
     {
         customer_services.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "customer_service");
     }else
     {
         customer_services.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -42,9 +48,11 @@ document.getElementById("credit_card_services_b").addEventListener("click" , fun
     if(credit_card_services.style.display === "none")
     {
         credit_card_services.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "credit_card_service");
     }else
     {
         credit_card_services.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -55,9 +63,11 @@ document.getElementById("loan_services_b").addEventListener("click" , function()
     if(loan_services.style.display === "none")
     {
         loan_services.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "loan_service");
     }else
     {
         loan_services.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -67,9 +77,11 @@ document.getElementById("users_services_b").addEventListener("click" , function(
     if(users_services.style.display === "none")
     {
         users_services.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "users_service");
     }else
     {
         users_services.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -79,9 +91,11 @@ document.getElementById("Bank_Users_Service_b").addEventListener("click" , funct
     if(bank_userss.style.display === "none")
     {
         bank_userss.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "bank_users");
     }else
     {
         bank_userss.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -91,9 +105,11 @@ document.getElementById("Useraction_b").addEventListener("click" , function()
     if(Useractions.style.display === "none")
     {
         Useractions.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "Useraction");
     }else
     {
         Useractions.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -101,8 +117,10 @@ var popupMenu = document.getElementById("popup-menu");
 document.getElementById("settings").addEventListener("click", function() {
     if (popupMenu.style.display === "block") {
         popupMenu.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "popup-menu");
     } else {
         popupMenu.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "");
     }
 });
 
@@ -131,4 +149,15 @@ function validateEmail() {
     document.getElementById('resultMessage').textContent = 'Invalid email address';
     return false; 
     }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+   var lastAccessedSection = localStorage.getItem('lastAccessedSection');
+   if (lastAccessedSection) {
+       showSection(lastAccessedSection);
+   }
+});
+function showSection(sectionId) {
+   document.getElementById(sectionId).style.display = 'block';
+   localStorage.setItem('lastAccessedSection', sectionId);
 }

@@ -1,11 +1,10 @@
 <?php
-$host = 'localhost';
-$db   = 'bank';
+$host = 'localhost'; // Fix the typo here
+$db = 'socials';
 $user = 'root';
 $pass = '';
-$charset = 'utf8mb4';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -17,10 +16,5 @@ try {
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-
-$stmt = $pdo->query('SELECT status, value FROM system_health');
-$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-header('Content-Type: application/json');
-echo json_encode($data);
 ?>
+

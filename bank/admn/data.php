@@ -25,7 +25,7 @@ function fetchData($conn, $query) {
 }
 
 
-$selectMaxIdQuery = "SELECT MAX(id) AS max_id FROM daily_transactions";
+$selectMaxIdQuery = "SELECT COUNT(*)AS max_id FROM daily_transactions";
 $result = $conn->query($selectMaxIdQuery);
 
 if ($result->num_rows > 0) {
@@ -74,7 +74,7 @@ if ($active_users_result->num_rows > 0) {
     $row = $active_users_result->fetch_assoc();
     $active_users_count = $row["c_user_id"];
 } else {
-    echo "No transactions found.";
+    echo "No data found.";
 }
 
 

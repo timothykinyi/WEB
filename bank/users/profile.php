@@ -1,19 +1,20 @@
 <?php
-if (isset($_COOKIE['userlogin'])) {
-    $login = $_COOKIE['userlogin'];
-    if (isset($_COOKIE['account_no'])) {
-        $account_no = $_COOKIE['account_no'];
-        if ($login === $account_no) {
-
+    if (isset($_COOKIE['userlogin'])) {
+        $login = $_COOKIE['userlogin'];
+        if (isset($_COOKIE['account_no'])) {
+            $account_no = $_COOKIE['account_no'];
+            if ($login === $account_no) {
+                setcookie("account_no", $account_no, time() + 31536000, "/");
+                setcookie("userlogin", "$login", time() + 31536000, "/");
+            } else {
+                header("Location: index.php");
+            }
         } else {
             header("Location: index.php");
         }
     } else {
         header("Location: index.php");
     }
-} else {
-    header("Location: index.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,9 +29,21 @@ if (isset($_COOKIE['userlogin'])) {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap">
 <link rel="stylesheet" href="profile.css">
+<link rel="stylesheet" href="show.css">
 
 </head>
 <body>
+<?php
+    if (isset($_GET["error"])) {
+        $result = $_GET["error"];
+        echo "<form><p class =  'note' > <button onclick ='out();'>x</button>$result</p></form>";
+    }
+    function out()
+    {
+        $result="";
+        header("Location: error.php?error=$result");
+    }
+?>
 <header>
     <div class="head">
         <span class = "span1">
@@ -173,7 +186,7 @@ if (isset($_COOKIE['userlogin'])) {
     <div class="contact-info">
         <h3>Contact Information:</h3>
         <p><strong>Phone:</strong> 0742243421</p>
-        <p><strong>Email:</strong> <a href="mailto:support@bazebank.com">support@bazebank.com</a></p>
+        <p><strong>Email:</strong> <a href="mailto:bazebank0@gmail.com">bazebank0@gmail.com</a></p>
     </div>
     <div class="contact-form">
         <h3>Contact Form:</h3>

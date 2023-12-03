@@ -33,7 +33,8 @@ function loanapp()
     $connection = new mysqli("localhost", "root", "","bank");
     if($connection -> connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Application failed try again ! ";
+        header("Location: accact.php?error=$res");
     }
     
     $ltype= $_POST["loan-type"];
@@ -48,13 +49,13 @@ function loanapp()
     $result = $connection->query($sql);
     
     if ($result === true) {
-        echo (" added successful.");
-       
-        header("Location: accact.php");
+
+        $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Successful.";
+        header("Location: accact.php?error=$res");
         }
         else {
-            $res = "Application failed try again ! ";
-            header("Location: error.php?error=$res");
+            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Application failed try again ! ";
+            header("Location: accact.php?error=$res");
         }
     $connection->close();
     
@@ -66,7 +67,8 @@ function creditapp()
     $connection = new mysqli("localhost", "root", "","bank");
     if($connection -> connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Application failed try again ! ";
+        header("Location: accact.php?error=$res");
     }
     
     $name= $_POST["full-name"];
@@ -80,13 +82,12 @@ function creditapp()
     $result = $connection->query($sql);
     
     if ($result === true) {
-        echo ("Beneficiary added successful.");
-       
-        header("Location: accact.php");
+        $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Application succesful ";
+        header("Location: accact.php?error=$res");
         }
         else {
-            $res = "Application failed try again ! ";
-            header("Location: error.php?error=$res");
+            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Application failed try again ! ";
+            header("Location: accact.php?error=$res");
         }
     $connection->close();
     
@@ -99,7 +100,8 @@ function savings()
     $connection = new mysqli("localhost", "root", "",$database);
     if($connection -> connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+        header("Location: accact.php?error=$res");
     }
     $goal_name = $_POST["goal-name"];
     $amount= $_POST["goal-amount"];
@@ -110,12 +112,13 @@ function savings()
     $result = $connection->query($sql);
 
     if ($result === true) {
-        echo ("Beneficiary added successful.");
         $_SESSION['account_no'] = $database;
-        header("Location: accact.php");
+        $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Succesfully added";
+        header("Location: accact.php?error=$res");
         }
         else {
-            echo "Error3: " . $sql . "<br>" . $connection->error;
+            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+            header("Location: accact.php?error=$res");
         }
     $connection->close();
 }
@@ -131,7 +134,8 @@ function save_for_goal()
     $connection = new mysqli("localhost", "root", "",$accountno);
     if($connection -> connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+        header("Location: accact.php?error=$res");
     }
     $goal_name = $_POST["goal-name"];
     $amount= $_POST["goal-amount"];
@@ -147,8 +151,8 @@ function save_for_goal()
     }
     if ($bal < $amount)
     {
-        $result = "The account balance is to low to complete this transaction!";
-        header("Location: error.php?error=$result");
+        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>The account balance is to low to complete this transaction!";
+        header("Location: accact.php?error=$result");
     }else
     {
         $newbal = $bal - $amount;
@@ -184,20 +188,24 @@ function save_for_goal()
                         $res = $con->query($sq);
                         $_SESSION['balance'] = $newbal;
                         $_SESSION['account_no'] = $accountno;
-                        header("Location: accact.php");
+                        $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Saved";
+                        header("Location: accact.php?error=$res");
             
                 }else
                 { 
-                    echo(" transaction failed ".$sql4. "<br>" .$connection->error );
+                    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+                    header("Location: accact.php?error=$res");
                 }
             }else
             { 
-                echo(" transaction failed ".$sql2. "<br>" .$connection->error );
+                $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+                header("Location: accact.php?error=$res");
             }
     
         }else
         { 
-            echo(" transaction failed ".$sql1. "<br>" .$connection->error );
+            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+            header("Location: accact.php?error=$res");
         }
     
       }
@@ -218,7 +226,8 @@ function retirementsaving()
     $connection = new mysqli($server,$username,$password,$database);
     if ($connection ->connect_error)
     {
-        die("Connection failed: " .$connection->connect_error );
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+        header("Location: accact.php?error=$res");
     }
     $myacc = $_SESSION['account_no'];
     $accountno = $_SESSION['account_no'];
@@ -234,8 +243,8 @@ function retirementsaving()
         }
         if ($bal < $amount)
         {
-            $result = "The account balance is to low to complete this transaction!";
-            header("Location: error.php?error=$result");
+            $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>The account balance is to low to complete this transaction!";
+            header("Location: accact.php?error=$result");
         }else
         {
             $newbal = $bal - $amount;
@@ -258,8 +267,8 @@ function retirementsaving()
                 $er = "Unknown database '".$accountno."'";
                 if($connection1->connect_error == $er)
                 {
-                    $result = "Acoount number doesn't exist ! ";
-                    header("Location: error.php?error=$result");
+                    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Acoount number doesn't exist ! ";
+                    header("Location: accact.php?error=$result");
                 }
                 else{
                     die("Connection failed: " .$connection1->connect_error );
@@ -292,24 +301,29 @@ function retirementsaving()
                             $sq = "INSERT INTO `daily_transactions`(`amount`, `description`) VALUES ('$amount','Send Money')";
                             $res = $con->query($sq);
                             setcookie("retirementplan", $newbal2, time() + 31536000, "/");
-                            header("Location: accact.php");
+                            $res ="<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>KSH ". $amount ." Saved for retirement";
+                            header("Location: accact.php?error=$res");
                         }else
                         { 
-                            echo(" transaction failed ".$sql5. "<br>" .$connection1->error );
+                            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+                            header("Location: accact.php?error=$res");
                         }
                 
                     }else
                     { 
-                        echo(" transaction failed ".$sql4. "<br>" .$connection1->error );
+                        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+                        header("Location: accact.php?error=$res");
                     }
                 }else
                 { 
-                    echo(" transaction failed ".$sql2. "<br>" .$connection->error );
+                    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+                    header("Location: accact.php?error=$res");
                 }
 
             }else
             { 
-                echo(" transaction failed ".$sql1. "<br>" .$connection->error );
+                $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ! ";
+                header("Location: accact.php?error=$res");
             }
 
         }
@@ -323,7 +337,8 @@ function Budgetplan()
     $connection = new mysqli("localhost", "root", "",$database);
     if($connection -> connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+        header("Location: utilities.php?error=$res");
     }
     $budgetcategory = $_POST["budget-category"];
     $amount= $_POST["budget-amount"];
@@ -333,12 +348,13 @@ function Budgetplan()
     $result = $connection->query($sql);
 
     if ($result === true) {
-        echo ("Beneficiary added successful.");
         $_SESSION['account_no'] = $database;
-        header("Location: utilities.php");
+        $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Budget Added";
+        header("Location: utilities.php?error=$res");
         }
         else {
-            echo "Error3: " . $sql . "<br>" . $connection->error;
+            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+            header("Location: utilities.php?error=$res");
         }
     $connection->close();
 }
@@ -350,7 +366,8 @@ function DeleteBudgetplan()
     $connection = new mysqli("localhost", "root", "",$database);
     if($connection -> connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+        header("Location: utilities.php?error=$res");
     }
     $budgetname = $_POST["budgetname"];
     
@@ -361,10 +378,12 @@ function DeleteBudgetplan()
     if ($result === true) {
 
         $_SESSION['account_no'] = $database;
-        header("Location: utilities.php");
+        $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Budget plan deleted ";
+        header("Location: utilities.php?error=$res");
         }
         else {
-            echo "Error3: " . $sql . "<br>" . $connection->error;
+            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+            header("Location: utilities.php?error=$res");
         }
     $connection->close();
 
@@ -378,7 +397,8 @@ function AddBeneficiary()
     $connection = new mysqli("localhost", "root", "",$database);
     if($connection -> connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+        header("Location: utilities.php?error=$res");
     }
     $name= $_POST["beneficiaryname"];
     $DOB= $_POST["beneficiaryDOB"];
@@ -388,12 +408,13 @@ function AddBeneficiary()
     $result = $connection->query($sql);
     
     if ($result === true) {
-        echo ("Beneficiary added successful.");
         $_SESSION['account_no'] = $database;
-        header("Location: utilities.php");
+        $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Beneficiary added successfully.";
+        header("Location: utilities.php?error=$res");
         }
         else {
-            echo "Error3: " . $sql . "<br>" . $connection->error;
+            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+            header("Location: utilities.php?error=$res");
         }
     $connection->close();
 }
@@ -406,7 +427,8 @@ function delBeneficiary()
     $connection = new mysqli("localhost", "root", "",$database);
     if($connection -> connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+        header("Location: utilities.php?error=$res");
     }
     $name= $_POST["bname"];    
     
@@ -416,10 +438,12 @@ function delBeneficiary()
     if ($result === true) {
         
         $_SESSION['account_no'] = $database;
-        header("Location: utilities.php");
+        $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Beneficiary removed successfully.";
+        header("Location: utilities.php?error=$res");
         }
         else {
-            echo "Error3: " . $sql . "<br>" . $connection->error;
+            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+            header("Location: utilities.php?error=$res");
         }
     $connection->close();
 }

@@ -9,7 +9,8 @@ $database = "bank";
 $conn = new mysqli($server, $username, $password, $database);
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: utilities.php?error=$res");
 }
 
 

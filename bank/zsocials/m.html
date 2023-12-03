@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Messaging Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        #message-container {
+            height: 300px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+            background-color: #fff;
+            transition: scroll-behavior 0.5s ease-in-out; /* Smooth scrolling transition */
+        }
+        #message-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid #3498db;
+        }
+        .message p {
+            margin: 0;
+            flex-grow: 1;
+            overflow-wrap: break-word;
+        }
+        .message-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delete-btn, .edit-btn {
+            padding: 5px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 3px;
+        }
+        .delete-btn {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+        .edit-btn {
+            background-color: #3498db;
+            color: #fff;
+        }
+        .edit-btn:hover {
+            background-color: #2980b9;
+        }
+        /* Highlight the current user's messages */
+        .message.currentUser {
+            border-left: 4px solid #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced Messaging Page</h1>
+
+    <div id="message-container"></div>
+
+    <form id="message-form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="message">Message (Max 200 characters):</label>
+        <textarea id="message" maxlength="200" required></textarea>
+
+        <button type="button" onclick="sendMessage()">Send Message</button>
+    </form>
+
+    <script>
+        function formatDate(date) {
+            const options = { hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric' };
+            return new Intl.DateTimeFormat('en-US', options).format(date);
+        }
+
+        function deleteMessage(element) {
+            const messageContainer = document.getElementById('message-container');
+            const message = element.parentElement.parentElement;
+            messageContainer.removeChild(message);
+        }
+
+        function editMessage(element) {
+            const message = element.parentElement.parentElement;
+            const messageText = message.querySelector('.message-text');
+            const editedText = prompt('Edit your message:', messageText.textContent.trim());
+
+            if (editedText !== null) {
+                messageText.textContent = editedText;
+            }
+        }
+
+        function sendMessage() {
+            const name = document.getElementById('name').value;
+            const messageText = document.getElementById('message').value;
+
+            if (name.trim() === '' || messageText.trim() === '') {
+                alert('Please enter your name and message');
+                return;
+            }
+
+            const messageContainer = document.getElementById('message-container');
+            const message = document.createElement('div');
+            message.className = 'message';
+
+            const timestamp = formatDate(new Date());
+            message.innerHTML = `
+                <div class="message-info">
+                    <p><strong>${name}</strong> (${timestamp}): <span class="message-text">${messageText}</span></p>
+                    <div>
+                        <button class="edit-btn" onclick="editMessage(this)">Edit</button>
+                        <button class="delete-btn" onclick="deleteMessage(this)">Delete</button>
+                    </div>
+                </div>
+            `;
+
+            // Highlight the current user's messages
+            const currentUser = messageContainer.children.length % 2 === 0 ? 'currentUser' : '';
+            message.classList.add(currentUser);
+
+            messageContainer.appendChild(message);
+
+            // Clear the input fields
+            document.getElementById('name').value = '';
+            document.getElementById('message').value = '';
+
+            // Scroll to the bottom of the message container with smooth scrolling
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+
+            // Focus on the input for a better user experience
+            document.getElementById('message').focus();
+        }
+    </script>
+</body>
+</html>

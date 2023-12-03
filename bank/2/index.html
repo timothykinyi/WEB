@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send SMS</title>
+</head>
+<body>
+    <h2>Send SMS</h2>
+    
+    <form action="send_sms.php" method="post">
+        <label for="phoneNumber">Recipient's Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        
+        <textarea id="message" name="message" rows="4" required placeholder="Enter your message"></textarea>
+        
+        <input type="submit" value="Send SMS">
+    </form>
+</body>
+</html>

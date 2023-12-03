@@ -5,7 +5,8 @@ if (isset($_COOKIE['account_no'])) {
     $user_id =  $_COOKIE['account_no'];
 
 } else {
-    echo "Cookie not set.";
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: error.php?error=$res");
 }
 
 $db = new mysqli("localhost", "root", "","bank");
@@ -15,12 +16,18 @@ $logout_query = "DELETE FROM `user_activity` WHERE user_id = '$user_id'";
 $result = $db->query($logout_query);
 if($result === true)
 {   
-    session_destroy();
+    $_SESSION['username'] = "";
+    $_SESSION['account_no'] = "";
+    $_SESSION['balance'] = "";
+    $_SESSION['status'] = "";
+    setcookie("retirementplan", "", time() + 31536000, "/");
     setcookie('userlogin', '', time() - 31536000, '/');
-    header("Location: index.php");
+    $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>logged out";
+    header("Location: index.php?error=$res");
 }else
 { 
-    echo(" failed " .$logout_query. "<br>" .$db->error );
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: error.php?error=$res");
 }
 
 ?>

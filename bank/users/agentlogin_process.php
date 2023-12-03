@@ -11,7 +11,8 @@ $database = "bank";
 $conn = new mysqli($server, $username, $password, $database);
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: agentlogin.php?error=$result");
 }
 
 
@@ -28,16 +29,18 @@ if ($result->num_rows > 0) {
         $agent_no = $row['agent_no'];
         $username = $row['email'];
         $passwrd = $row['password'];
+        $status = $row['status'];
 
     }
 } else {
-    $result = "Failed try again ! ";
-    header("Location: error.php?error=$result");
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><strong>Login failed </strong><br>Check your user name and try again <br>If you don't have an account <a href='option.php'>register</a>";
+    header("Location: agentlogin.php?error=$res");
 }
 $conns = new mysqli("localhost", "root", "", $data);
 
 if ($conns->connect_error) {
-    die("Connection failed: " . $conns->connect_error);
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: agentlogin.php?error=$result");
 }
 $sql0 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
 $result0 = $conns->query($sql0);
@@ -50,26 +53,34 @@ $bal = $row0['balance'];
 if(($username === $username_email) && password_verify($password , $passwrd)) 
 {
     
-    $_SESSION['agent_no'] = $agent_no;
-    $_SESSION['account_no'] = $data;
-    $_SESSION['balance'] = $bal;
+    $_SESSION['agent_n'] = $agent_no;
+    $_SESSION['agaccount_no'] = $data;
+    $_SESSION['agbalance'] = $bal;
+    $_SESSION['agstatus'] = $status;
     $user_id = $data;
     $login_query = "INSERT INTO user_activity (user_id, activity_type) VALUES ('$user_id', 'login')";
     $res = $conn->query($login_query);
     if($res === true)
     {   
-        setcookie("account_no", "$data", time() + 31536000, "/");
+        setcookie("agent_no", "$data", time() + 31536000, "/");
         setcookie("agentlogin", "$data", time() + 31536000, "/");
-        header("Location: agentpage.php");
+        if ($status === "Active")
+        {
+            header("Location: agentpage.php");
+        }else
+        {
+            header("Location: frz.php");
+        }
+        
     }else
     { 
-        $result = "Failed 2 <a href='agentlogin.php'>Try again</a>!  ";
-        header("Location: error.php?error=$result");
+        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed <a href='agentlogin.php'>Try again</a>";
+        header("Location: agentlogin.php?error=$result");
     }
 
 } else {
-    $result = "Failed <a href='agentlogin.php'>Try again</a>!  ";
-    header("Location: error.php?error=$result");
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed <a href='agentlogin.php'>Try again</a>";
+    header("Location: agentlogin.php?error=$result");
    
 }
 

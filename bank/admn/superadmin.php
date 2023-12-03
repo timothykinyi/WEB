@@ -10,13 +10,19 @@
             return null;
         }
         if (isset($_COOKIE['adm_no'])) { $admn = $_COOKIE['adm_no']; } 
-        else { header("Location: adminlogin.php");}
+        else {         
+            $res = "Login in to continue";
+            header("Location: adminlogin.php?error=$res");}
         $cookieValues = getCookieWithArray($admn);
         if ($cookieValues) {
           $adm_no = $cookieValues[0];
           $role = $cookieValues[1];
           $log = $cookieValues[2];
-        }else { header("Location: adminlogin.php"); }
+          setcookie("adm_no", "$adm_no", time() + 31536000, "/");
+        }else { 
+            $res = "Login in to continue";
+            header("Location: adminlogin.php?error=$res");
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +39,20 @@
 <link rel="stylesheet" href="adminpage.css">
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="news.css">
+<link rel="stylesheet" href="show.css">
 </head>
 <body>
+<?php
+    if (isset($_GET["error"])) {
+        $result = $_GET["error"];
+        echo "<form><p class =  'note' > <button onclick ='out();'>x</button><br> <br><br>". $result ."<br><br></p></form>";
+    }
+    function out()
+    {
+        $result="";
+        header("Location: superadmin.php?error=$result");
+    }
+?>
 <header>
     <div class="head">
         <span class = "span1">
@@ -104,8 +122,8 @@
             ';
         }else
         {
-            $res = "Who are you !";
-            header("Location: error.php?error=$res");
+            $res = "Login in to continue";
+            header("Location: adminlogin.php?error=$res");
         }
     ?>
 
@@ -267,6 +285,7 @@
             require "useract.php";
             if ($viewAccountDetailsresult->num_rows > 0)
             {
+                $n = $viewAccountDetailsresult->num_rows;
                 $coun =0;
             while ($row = $viewAccountDetailsresult->fetch_assoc()) {
                 if (isset($_COOKIE['view'])) {
@@ -290,13 +309,50 @@
                     </tbody>';
                     $coun ++;
                     }else if ($coun < 1)
-                    {
-                        echo "<td> No data founder <td>";
+                    {$coun =0;
+                        $n = 0;
+                            if ($viewagentDetailsresult->num_rows > 0)
+                            {
+                                $m = $viewagentDetailsresult->num_rows;
+                                while ($row = $viewagentDetailsresult->fetch_assoc()) 
+                                {
+                                    
+                                    if (isset($_COOKIE['view'])) {
+                                        $accno = $_COOKIE['view'];
+                                    
+                                    } else {
+                                        echo "Cookie not set.";
+                                    }
+                                    $m--;
+                                    if ($row['account_no'] === $accno)
+                                        {  
+                                        echo 
+                                        '
+                                        <tbody>
+                                        <tr>
+                                            <td>' . $row['first_name'] . '</td>
+                                            <td>' . $row['email'] . '</td>
+                                            <td>' . $row['account_no'] . '</td>
+                                            <td>' . $row['status'] . '</td>
+                                        </tr>
+                                        </tbody>';
+                                        $coun++;
+                                        }else if ( $m === 0 && $n === 0 && $row['account_no'] != $accno && $coun != 1)
+                                        { echo "<td> No data found  on ".$accno." <td>";}
+                                        
+                                }
+                            }
+                            else
+                            {
+                                echo "<td> No data found <td>";
+                            }
+
                     }
+                    
                 }
                 }else
                 {
-                    echo "<td> No data founder <td>";
+                    echo "<td> No data found <td>";
                 }
             ?>
         </table>
@@ -332,7 +388,7 @@
         <input type="text" name="interestRate" id="interestRate"><br>
         <label for="transactionLimit">Transaction Limit (KSH):</label>
         <input type="text" name="transactionLimit" id="transactionLimit"><br>
-        <label for="feeStructure">Fee Structure:</label>
+        <label for="feeStructure">Transaction Cost:</label>
         <input type="text" name="feeStructure" id="feeStructure"><br>
         <button name="updateSystemSettings">Update System Settings</button>
         </form>
@@ -464,6 +520,17 @@
             popupMenu.style.display = "block";
         }
     });
+          
+        var popupMenu = document.getElementById("popup-menu");
+        document.getElementById("settings").addEventListener("click", function() {
+            if (popupMenu.style.display === "block") {
+                popupMenu.style.display = "none";
+                localStorage.setItem('lastAccessedSection', "popup-menu");
+            } else {
+                popupMenu.style.display = "block";
+                localStorage.setItem('lastAccessedSection', "");
+            }
+        });
 
     function checkPasswordStrength() {
     var password = document.getElementById("new-password").value;

@@ -16,7 +16,8 @@ function login()
     $conn = new mysqli($server, $username, $password, $database);
 
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: adminlogin.php?error=$nres");
     }
 
 
@@ -34,10 +35,12 @@ function login()
             $passwrd = $row['password'];
             $status = $row['status'];
             $role = $row['role'];
+            $log = $row['log'];
 
         }
     } else {
-        echo "No data found.";
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>check email and try again";
+        header("Location: adminlogin.php?error=$nres");
     }
 
     if(($email === $username_email) && password_verify($password , $passwrd)) {
@@ -50,17 +53,32 @@ function login()
         $res = $conn->query($login_query);
         if($res === true)
         {
+            if ($status === "Active")
+            {
                 $values = [$adm_no, $role , 'logedin'];
                 setCookieWithArray($adm_no, $values, 30);
                 setcookie("adm_no", "$adm_no", time() + 31536000, "/");
-                header("Location: superadmin.php");
+                if ($log === '1')
+                {
+                    header("Location: adminfirstchange.php");
+                }else 
+                {
+                    header("Location: superadmin.php");
+                }
+            }else
+            {
+                header("Location: frz.php");
+            }
+
             
         }else
         { 
-            echo(" failed " .$login_query. "<br>" .$conn->error );
+            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+            header("Location: adminlogin.php?error=$nres");
         }
     } else {
-        echo "Login failed . ".$username_email." " .$email." ".$password." new ".$password." <a href='agentlogin.php'>Try again</a>";
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Login failed  try again";
+        header("Location: adminlogin.php?error=$nres");
     }
 }
 

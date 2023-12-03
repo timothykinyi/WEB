@@ -5,33 +5,9 @@
 <title>BAZEBANK.com</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="show.css">
 <script>
 
-        function checkPasswordStrength() {
-
-
-            var password = document.getElementById("password").value;
-            var cpassword = document.getElementById("cpassword").value;
-    
-            var strongPasswordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-
-
-            if (strongPasswordPattern.test(password)) {
-                
-                if(validateEmail())
-                {
-                    return true;
-                }else
-                {
-                    return false;
-                }
-            } else {
-                  var notification = document.getElementById("notification");
-
-                notification.innerHTML = "<p>Password should be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit.</p>";
-                return false; 
-        }
-    }
 
     function validateEmail() {
       // Get the entered email value
@@ -53,8 +29,19 @@
 </head>
 
 <body>
+<?php
+    if (isset($_GET["error"])) {
+        $result = $_GET["error"];
+        echo "<form><p class =  'note' > <button onclick ='out();'>x</button>$result</p></form>";
+    }
+    function out()
+    {
+        $result="";
+        header("Location: error.php?error=$result");
+    }
+?>
 <section class="mid">
-    <form class="log" action="agentreg_proces.php" method="post" onsubmit="return checkPasswordStrength();">
+    <form class="log" action="agentreg_proces.php" method="post" onsubmit="return validateEmail();">
 
     <img class ="logo" src="tmg/24.png" alt="company logo" height="100px">
         <label for ="firstname" >first name</label>
@@ -65,9 +52,6 @@
         <input type="Email" placeholder="Enter your Email"id ="email" name="Email" required> 
         <label for="password" >password</label>
         <input type="password" id="password" placeholder="Enter your password" name="password" required> 
-        <label for ="cpassword" >Confirm the password</label>
-        <input type="password" id="cpassword" placeholder="Confirm password" name="cpassword" required> 
-        
         <br>
         <button for="submit" id="sub"> submit</button>
         <p>If you have an account <button id="sub1"><a href="agentlogin.php">sign in</a></button></p>     

@@ -32,9 +32,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap">
 <link rel="stylesheet" href="adminpage.css">
 <link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="show.css">
 <link rel="stylesheet" href="news.css">
 </head>
 <body>
+<?php
+    if (isset($_GET["error"])) {
+        $result = $_GET["error"];
+        echo "<form><p class =  'note' > <button onclick ='out();'>x</button><br> <br> $result <br></p></form>";
+    }
+    function out()
+    {
+        $result="";
+        header("Location: error.php?error=$result");
+    }
+?>
 <header>
     <div class="head">
         <span class = "span1">

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Form</title>
+</head>
+<body>
+
+<form id="transactionForm">
+    <label for="account-number">Your Account Number:</label>
+    <input type="text" id="account-number" name="account-number" required>
+
+    <label for="paye">Payee Account Number:</label>
+    <input type="text" id="paye" name="paye" required>
+
+    <label for="amount">Amount:</label>
+    <input type="text" id="amount" name="amount" required>
+
+    <button type="button" onclick="completeTransaction()">Complete Transaction</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="your_script.js"></script>
+
+</body>
+</html>

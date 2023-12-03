@@ -5,8 +5,20 @@
 <title>BAZEBANK.com</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="show.css">
 </head>
 <body>
+<?php
+    if (isset($_GET["error"])) {
+        $result = $_GET["error"];
+        echo "<form><p class =  'note' > <button onclick ='out();'>x</button>$result</p></form>";
+    }
+    function out()
+    {
+        $result="";
+        header("Location: error.php?error=$result");
+    }
+?>
 <section class="mid">
     <form class="log" action="agentlogin_process.php" method="POST">
 
@@ -17,9 +29,9 @@
         <label for="password" >password</label>
         <input name="password" type="password" name="password" placeholder="Enter your password" required> 
         <br>
-        <a href ="kkkk" >Forgot your password?</a>
-        <br>
         <button for="submit" id="sub"> log in</button>
+        <br>
+        <a href="agentrecovery.php">recover password</a>
         <p>If you don't have an account <button id="sub1"><a href="option.php">register</a></button></p>
     </form>
 

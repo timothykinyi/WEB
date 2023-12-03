@@ -4,14 +4,16 @@ session_start();
 if (isset($_COOKIE['account_no'])) {
     $sharedData = $_COOKIE['account_no'];
 } else {
-    echo "Cookie not set.";
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+    header("Location: utilities.php?error=$res");
 }
 
 $database = $_SESSION['account_no'];
 $db = new mysqli("localhost", "root", "",$sharedData);
 if ($db->connect_error)
 {
-    die("Connection failed: " .$db->connect_error );
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+    header("Location: utilities.php?error=$res");
 }
 
 $query = "SELECT * FROM beneficiaries";

@@ -33,7 +33,8 @@ function mk()
     $db = new mysqli("localhost", "root", "","bank");
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$result");
     }
     $id =$_POST["id"];
 
@@ -44,7 +45,8 @@ function mk()
             header("Location: superadmin.php");
     }else
     { 
-        echo(" failed ".$query. "<br>" .$db->error );
+        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$result");
     }
 }
 
@@ -59,7 +61,8 @@ function loan_acc()
     $db = new mysqli("localhost","root","",$account);
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $id =$_POST["id"];
@@ -77,25 +80,31 @@ function loan_acc()
                 {  
                     if (loandepo ($account , $amount))
                     {
-                        header("Location: superadmin.php");
+                        $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Loan accepted";
+                        header("Location: superadmin.php?error=$nres");
                     }
                     else
                     {
-                        echo "can't send loan money to recepient";
+                        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>can't send loan money to recepient";
+                        header("Location: superadmin.php?error=$nres");
+                    
                     }
                 }else
                 {
-                    echo "can't create recepient's loan table";
+                    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>can't send loan money to recepient";
+                    header("Location: superadmin.php?error=$nres");
                 }
             }else
             { 
-                echo(" failed ".$query. "<br>" .$connection2->error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 
             $connection->close();
             }
             else {
-                echo "Error3: " . $dqueryz1 . "<br>" . $db->error;
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
     }
 
@@ -108,7 +117,8 @@ function loan_dec()
     $db = new mysqli("localhost","root","",$account);
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $id =$_POST["id"];
@@ -122,16 +132,19 @@ function loan_dec()
             $result = $connection2->query($query);
             if($result === true)
             {   
-                header("Location: superadmin.php");
+                $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Loan declined ";
+                header("Location: superadmin.php?error=$nres");
             }else
             { 
-                echo(" failed ".$query. "<br>" .$connection2->error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 
             $connection->close();
             }
             else {
-                echo "Error3: " . $dqueryz1 . "<br>" . $db->error;
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 }
 
@@ -143,7 +156,8 @@ function card_acc()
     $db = new mysqli("localhost","root","",$account);
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $id =$_POST["id"];
@@ -151,7 +165,9 @@ function card_acc()
         if ($db->query($queryz1)=== true) {
             $connection2 = new mysqli("localhost", "root", "","bank");
             if ($connection2->connect_error)
-            { die("Connection failed: " .$connection2->connect_error ); }
+            {         
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres"); }
             
             $query = "DELETE FROM creadit_appl WHERE id = $id";
             $result = $connection2->query($query);
@@ -159,22 +175,27 @@ function card_acc()
             {   
                 if (cardtable ($account))
                 {
-                    header("Location: superadmin.php");
+                    $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Credit card aproved";
+                    header("Location: superadmin.php?error=$nres");
                 }
                 else
                 {
-                    echo "Can't create credit teble";
+                    
+                    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Can't create credit teble";
+                    header("Location: superadmin.php?error=$nres");
                 }
                 
             }else
             { 
-                echo(" failed ".$query. "<br>" .$connection2->error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 
             $connection->close();
             }
             else {
-                echo "Error3: " . $dqueryz1 . "<br>" . $db->error;
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 }
 
@@ -187,7 +208,8 @@ function card_dec()
     $db = new mysqli("localhost","root","",$account);
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $id =$_POST["id"];
@@ -195,22 +217,27 @@ function card_dec()
         if ($db->query($queryz1)=== true) {
             $connection2 = new mysqli("localhost", "root", "","bank");
             if ($connection2->connect_error)
-            { die("Connection failed: " .$connection2->connect_error ); }
+            {                 
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres"); }
             
             $query = "DELETE FROM creadit_appl WHERE id = $id";
             $result = $connection2->query($query);
             if($result === true)
             {   
-                header("Location: superadmin.php");
+                $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Credit card applcation declined ";
+                header("Location: superadmin.php?error=$nres");
             }else
             { 
-                echo(" failed ".$query. "<br>" .$connection2->error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 
             $connection->close();
             }
             else {
-                echo "Error3: " . $dqueryz1 . "<br>" . $db->error;
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 }
 
@@ -222,7 +249,8 @@ function loandepo ($account , $amount)
     $connection = new mysqli("localhost","root","",$account);
     if ($connection ->connect_error)
     {
-        die("Connection failed: " .$connection->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
         $sql0 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
@@ -245,7 +273,8 @@ function loandepo ($account , $amount)
             
                 }
                 else {
-                    echo "Error3: " . $dquery . "<br>" . $connection->error;
+                    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                    header("Location: superadmin.php?error=$nres");
                 }
             // deposited account data
             $server1 = "localhost";
@@ -255,7 +284,8 @@ function loandepo ($account , $amount)
             $connection1 = new mysqli($server1,$username1,$password1,$database1);
             if ($connection1 ->connect_error)
             {
-                die("Connection failed: " .$connection1->connect_error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 
             $sql3 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
@@ -281,22 +311,24 @@ function loandepo ($account , $amount)
                             return true;
                         }else
                         { 
-                            echo(" transaction failed ".$sql5. "<br>" .$connection1->error );
                             return false;
                         }
                 
                     }else
                     { 
-                        echo(" transaction failed ".$sql4. "<br>" .$connection1->error );
+                        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                        header("Location: superadmin.php?error=$nres");
                     }
                 }else
                 { 
-                    echo(" transaction failed ".$sql2. "<br>" .$connection->error );
+                    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                    header("Location: superadmin.php?error=$nres");
                 }
 
             }else
             { 
-                echo(" transaction failed ".$sql1. "<br>" .$connection->error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: superadmin.php?error=$nres");
             }
 
 }
@@ -308,7 +340,8 @@ function loantable ($account, $amount, $repayment_period)
     $connection = new mysqli("localhost","root","",$account);
     if($connection->connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $rate = 0;
@@ -344,7 +377,8 @@ function loantable ($account, $amount, $repayment_period)
             }
         }
         else {
-            echo "Error2: " . $loan_table . "<br>" . $connection->error;
+            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+            header("Location: superadmin.php?error=$nres");
         }
 }
 
@@ -355,7 +389,8 @@ function cardtable ($account)
     $connection = new mysqli("localhost","root","",$account);
     if($connection->connect_error)
     {
-        die ("Connection failled " . $connection -> connect_error);
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $creditlimit = 100000;
@@ -383,7 +418,8 @@ function cardtable ($account)
 
         }
         else {
-            echo "Error2: " . $loan_table . "<br>" . $connection->error;
+            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+            header("Location: superadmin.php?error=$nres");
         }
 }
 
@@ -399,8 +435,8 @@ function Witdraw()
     $connection = new mysqli("localhost","root","",$account);
     if ($connection ->connect_error)
     {
-        $res = "Account doesn't exist";
-        header("Location: error.php?error=$res");
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Account doesn't exist ";
+        header("Location: teller.php?error=$nres");
     }
 
         $sql0 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
@@ -424,7 +460,8 @@ function Witdraw()
             
                 }
                 else {
-                    echo "Error3: " . $dquery . "<br>" . $connection->error;
+                    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                    header("Location: teller.php?error=$nres");
                 }
             // deposited account data
             $server1 = "localhost";
@@ -434,7 +471,8 @@ function Witdraw()
             $connection1 = new mysqli($server1,$username1,$password1,$database1);
             if ($connection1 ->connect_error)
             {
-                die("Connection failed: " .$connection1->connect_error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Account doesn't exist";
+                header("Location: teller.php?error=$nres");
             }
 
             $sql3 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
@@ -459,32 +497,44 @@ function Witdraw()
                             $con = new mysqli("localhost", "root", "","bank");
                             if ($con->connect_error) {die("Connection failed: " . $con->connect_error);}
                             $sq = "INSERT INTO `daily_transactions`(`amount`, `description`) VALUES ('$amount','teller withdrawn')";
-                            $res = $con->query($sq);
-                            header("Location: teller.php");
+                            if ($res = $con->query($sq))
+                            {
+                                $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Witdrown succesfully";
+                                header("Location: teller.php?error=$nres");
+                            }
+                            else
+                            {
+                                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>not recorded";
+                                header("Location: teller.php?error=$nres");
+                            }
                         }else
                         { 
-                            echo(" transaction failed ".$sql5. "<br>" .$connection1->error );
+                            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                            header("Location: teller.php?error=$nres");
                             
                         }
                 
                     }else
                     { 
-                        echo(" transaction failed ".$sql4. "<br>" .$connection1->error );
+                        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                        header("Location: teller.php?error=$nres");
                     }
                 }else
                 { 
-                    echo(" transaction failed ".$sql2. "<br>" .$connection->error );
+                    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                    header("Location: teller.php?error=$nres");
                 }
 
             }else
             { 
-                echo(" transaction failed ".$sql1. "<br>" .$connection->error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: teller.php?error=$nres");
             }
         }
         else
         {
-            $res = "Your account balance is too low to complete this transaction ";
-            header("Location: error.php?error=$res");
+            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Your account balance is too low to complete this transaction ";
+            header("Location: teller.php?error=$nres");
         }
 }
 
@@ -501,8 +551,8 @@ function Deposit()
     $connection = new mysqli("localhost","root","",$account);
     if ($connection ->connect_error)
     {
-        $res = "Account doesn't exist";
-        header("Location: error.php?error=$res");
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Account doesn't exist";
+        header("Location: teller.php?error=$nres");
     }
 
         $sql0 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
@@ -525,7 +575,8 @@ function Deposit()
             
                 }
                 else {
-                    echo "Error3: " . $dquery . "<br>" . $connection->error;
+                    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                    header("Location: teller.php?error=$nres");
                 }
             // deposited account data
             $server1 = "localhost";
@@ -535,7 +586,8 @@ function Deposit()
             $connection1 = new mysqli($server1,$username1,$password1,$database1);
             if ($connection1 ->connect_error)
             {
-                die("Connection failed: " .$connection1->connect_error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: teller.php?error=$nres");
             }
 
             $sql3 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
@@ -560,26 +612,38 @@ function Deposit()
                             $con = new mysqli("localhost", "root", "","bank");
                             if ($con->connect_error) {die("Connection failed: " . $con->connect_error);}
                             $sq = "INSERT INTO `daily_transactions`(`amount`, `description`) VALUES ('$amount','teller deposit')";
-                            $res = $con->query($sq);
-                            header("Location: teller.php");
+                            if ($res = $con->query($sq))
+                            {
+                                $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Deposited duccesfully ";
+                                header("Location: teller.php?error=$nres");
+                            }
+                            else
+                            {
+                                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Not recorded ";
+                                header("Location: teller.php?error=$nres");
+                            }
                         }else
                         { 
-                            echo(" transaction failed ".$sql5. "<br>" .$connection1->error );
+                            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                            header("Location: teller.php?error=$nres");
                             
                         }
                 
                     }else
                     { 
-                        echo(" transaction failed ".$sql4. "<br>" .$connection1->error );
+                        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                        header("Location: teller.php?error=$nres");
                     }
                 }else
                 { 
-                    echo(" transaction failed ".$sql2. "<br>" .$connection->error );
+                    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                    header("Location: teller.php?error=$nres");
                 }
 
             }else
             { 
-                echo(" transaction failed ".$sql1. "<br>" .$connection->error );
+                $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+                header("Location: teller.php?error=$nres");
             }
 
 }

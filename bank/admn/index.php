@@ -16,6 +16,7 @@
           $adm_no = $cookieValues[0];
           $role = $cookieValues[1];
           $log = $cookieValues[2];
+          setcookie("adm_no", "$adm_no", time() + 31536000, "/");
         }else { header("Location: adminlogin.php"); }
 ?>
 <!DOCTYPE html>
@@ -28,19 +29,20 @@ require "system2.php";
   <link rel="icon" href="tmg/b.ico" type="image/x-icon">
   <title>BAZEBANK.com</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
   <link rel="stylesheet" href="adminpage.css">
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="news.css">
-
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="news.css">
+  <link rel="stylesheet" href="show.css">
 </head>
 <body>
+
 <header>
     <div class="head">
         <span class = "span1">
@@ -81,11 +83,11 @@ require "system2.php";
       </div>
       <div class="metric">
         <h2>User Activity</h2>
-        <p id="userActivity"></p>
+        <p id="userActivity">0</p>
       </div>
     </div>
     <div id="adminPanel">
-      <div id="charts">
+    <div id="charts">
       <canvas id="accountCreationChart" width="400" height="300"></canvas>
       <br>
       <canvas id="transactionVolumeChart" width="400" height="300"></canvas>
@@ -110,7 +112,7 @@ require "system2.php";
           </div>
           <div class="legend-container" id="legendContainer"></div>
       </div>
-      <p>Welcome to the admin panel!</p>
+      <p>Welcome to the admin panel</p>
     </div>
   </div>
 

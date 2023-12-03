@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-hJRmIKjzVcSDXXSxj6yAxU5l/9bKJkgXgDqs7cv0Sf8gJgP6kn4tgDReeI2U+Em" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap">
-
+<link rel="stylesheet" href="show.css">
 </head>
 <body>
 <header>
@@ -23,6 +23,7 @@
         <a href="index.php"><strong>Personal</strong></a>
         <a href="index.php"><strong>Business</strong></a>
         <a href="agentlogin.php"><strong>Agent</strong></a>
+        <a href="profile.php"><strong>Transaction page</strong></a>
         </nav>
         <span class = "span">
         <button ><a href="registration.php">sign up</a></button>

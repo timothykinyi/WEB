@@ -2,7 +2,8 @@
 $db = new mysqli("localhost", "root", "","bank");
 if ($db->connect_error)
 {
-    die("Connection failed: " .$db->connect_error );
+    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+    header("Location: superadmin.php?error=$nres");
 }
 $query = "SELECT * FROM Customer_Support";
 $result = $db->query($query);

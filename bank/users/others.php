@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap">
 <link rel="stylesheet" href="abouts.css">
+<link rel="stylesheet" href="show.css">
 <?php
 require "functions.php";
 ?> 
@@ -35,6 +36,8 @@ require "functions.php";
     </div>
 </header>
 <main class = 'mid'>
+<main class="mi">
+<div class ="div1">
 <div class="slideshow-container">
         <div class="mySlides">
             <img class = "img" src="tmg/15.webp" alt="Image 2">
@@ -52,9 +55,6 @@ require "functions.php";
             <img class = "img" src="tmg/18.jpg" alt="Image 3">
         </div>
 </div>
-<main class="mi">
-<div class ="div1">
-
 <section class="help-faqs-section">
     <h2>Help and FAQs</h2>
     <p>If you have questions or need assistance, please check our Frequently Asked Questions (FAQs) below:</p>
@@ -62,10 +62,16 @@ require "functions.php";
         <li>
             <h3>How do I reset my password?</h3>
             <p>You can reset your password by clicking on the "Forgot Password" link on the login page.</p>
+            
+        </li>
+        <li>
+            <h3>How do I reset my password if I don't have my auth code</h3>
+            <p>You can reset your password by visiting any Baze bank branch for manual resetting of your password.</p>
+            
         </li>
         <li>
             <h3>How can I contact customer support?</h3>
-            <p>You can contact our customer support team via email at <a href="mailto:support@bazebank.com">support@bazebank.com</a> or by phone at 0742243421.</p>
+            <p>You can contact our customer support team via email at <a href="mailto:bazebank0@gmail.com">bazebank0@gmail.com</a> or by phone at 0742243421.</p>
         </li>
         <li>
             <h3>Are my transactions secure?</h3>
@@ -84,13 +90,14 @@ require "functions.php";
     <div class="contact-info">
         <h3>Contact Information:</h3>
         <p><strong>Phone:</strong> 0742243421</p>
-        <p><strong>Email:</strong> <a href="mailto:support@bazebank.com">support@bazebank.com</a></p>
+        <p><strong>Email:</strong> <a href="mailto:bazebank0@gmail.com">bazebank0@gmail.com</a></p>
     </div>
 </section>
 
 
 </div>
 </main>
+
 </main>
 
 <?php include "bottom.php"; ?> 

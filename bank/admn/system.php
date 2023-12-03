@@ -1,7 +1,9 @@
 <?php
 $currentYear = date("Y");
 $conn = new mysqli("localhost", "root", "","bank");
-if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
+if ($conn->connect_error) {
+echo $conn->connect_error;
+}
 
 $sqljan = "SELECT COUNT(*) AS user_count FROM users WHERE MONTH(registration_date) = 1 AND YEAR(registration_date) = '$currentYear'";
 $sqlfeb = "SELECT COUNT(*) AS user_count FROM users WHERE MONTH(registration_date) = 2 AND YEAR(registration_date) = '$currentYear'";

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<!-- Your HTML content goes here -->
+
+<script>
+    function showPopup(message) {
+        alert(message);
+    }
+
+
+    function completeTransaction() {
+        $.ajax({
+            url: 'pop.php', 
+            type: 'POST', 
+            dataType: 'json',
+            success: function (response) {
+
+                if (response.status === 'success') {
+
+                    showPopup(response.message);
+                } else {
+
+                    showPopup('Transaction failed:', response.message);
+                }
+            },
+            error: function (error) {
+                showPopup('Error during transaction:', error);
+            }
+        });
+    }
+    completeTransaction();
+</script>
+
+</body>
+</html>

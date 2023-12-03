@@ -398,7 +398,7 @@ height: 100%;
     padding: 10px;
     border-radius: 10px;
     background-color: hsla(208, 100%, 87%, 0.808);
-
+    position: relative;
     box-shadow: 0 10px 20px rgb(125, 123, 123); 
 
 }
@@ -460,3 +460,4 @@ border-radius: 50%;
 padding: 5px 8px;
 font-size: 12px;
 }
+

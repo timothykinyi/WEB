@@ -1,6 +1,4 @@
 <?php
-// Fetch table data from the database
-
 $conn =  new mysqli("localhost", "root", "","bank");
 
 if ($conn->connect_error) {

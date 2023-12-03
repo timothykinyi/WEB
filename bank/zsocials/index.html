@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form id="registrationForm" action="register.php" method="post">
+            <h2>Bank Sign Up</h2>
+
+            <div id="errorMessage" class="error-message"></div>
+
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+            <!-- Other form fields... -->
+
+            <button type="button" onclick="submitForm()">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Reset error message
+            document.getElementById("errorMessage").innerText = "";
+
+            // Perform client-side validation if needed
+
+            // Submit the form
+            document.getElementById("registrationForm").submit();
+        }
+
+        // Check for error message in the URL and display it
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorMessage = urlParams.get('error_message');
+            if (errorMessage) {
+                document.getElementById("errorMessage").innerText = errorMessage;
+            }
+        };
+    </script>
+</body>
+</html>

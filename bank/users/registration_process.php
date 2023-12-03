@@ -4,7 +4,9 @@ $username = "root";
 $password = "";
 $database = "bank";
 $connection = new mysqli($server, $username, $password, $database);
-if ($connection -> connect_error){echo ("connection failed " .$connection -> connect_error);}
+if ($connection -> connect_error){  
+     $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: registration.php?error=$result");}
 
 $first_name = $_POST['first_name'];
 $second_name = $_POST['second_name'];
@@ -12,6 +14,11 @@ $username = $_POST['username'];
 $email = $_POST['Email'];
 $password = $_POST['password'];
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $strongPasswordPattern = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/';
+
+    if (preg_match($strongPasswordPattern, $password)) {
+        
 
 $file=fopen("accountno.txt","r") or exit("Unable to open file in read!");
 $account_number = fgets($file);
@@ -21,9 +28,10 @@ $file1=fopen("accountno.txt","w") or exit("Unable to open file in write!");
 fwrite($file1, $account_number);
 fclose($file1);
 
-
-$sql = "INSERT INTO users  (first_name, second_name, username, email, password, account_no, status) 
-        VALUES ('$first_name', '$second_name', '$username', '$email', '$hashedPassword', '$account_number' , 'Active')";
+$authCode = generateAuthCode();
+$hashedauthCode = password_hash($authCode, PASSWORD_DEFAULT);
+$sql = "INSERT INTO users  (first_name, second_name, username, email, password, account_no, status, authcode) 
+        VALUES ('$first_name', '$second_name', '$username', '$email', '$hashedPassword', '$account_number' , 'Active' ,'$hashedauthCode')";
 
 if ($connection->query($sql) === true) {
         $servercreated = "localhost";
@@ -126,52 +134,74 @@ if ($connection->query($sql) === true) {
                                                     if ($connection_created2->query($database_table2) === true) {
                                                         $database_table3 = "INSERT INTO retirementplan (transactions, balance) VALUE('start','0')";
                                                         if ($connection_created2->query($database_table3) === true) {
-                                                            $result = "Registration successful.<br> <a href='index.php'>Login</a>";
+                                                            $result = "Registration successful.<br> your recovery token is: <br> <strong style='color: red;'>".$authCode."</strong><br>Save it securely this is the only way you can recover your account incase you forget your password. <br><a href='index.php'>Login</a>";
                                                             header("Location: pass.php?error=$result");
                                                         }
                                                         else {
-                                                            echo "Error3: " . $database_table3 . "<br>" . $connection_created1->error;
+                                                            $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                                            header("Location: registration.php?error=$result");
                                                         }
                                                     }
                                                     else {
-                                                        echo "Error3: " . $database_table2 . "<br>" . $connection_created1->error;
+                                                        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                                        header("Location: registration.php?error=$result");
                                                     }
                                                 }
                                                 else {
-                                                    echo "Error2: " . $database_table1 . "<br>" . $connection_created1->error;
+                                                    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                                    header("Location: registration.php?error=$result");
                                                 }
                                             }
                                             else {
-                                                echo "Error2: " . $database_table . "<br>" . $connection_created1->error;
+                                                $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                                header("Location: registration.php?error=$result");
                                             }
 
                                     } else {
-                                        echo "Error: " . $database_table10. "<br>" . $connection_created->error;
+                                        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                        header("Location: registration.php?error=$result");
                                     }
                                 }else {
-                                    echo "Error11: " . $database_table11 . "<br>" . $connection->error;
+                                    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                    header("Location: registration.php?error=$result");
                                 }
                             }
                             else {
-                                echo "Error3: " . $saving_table . "<br>" . $connection_created1->error;
+                                $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                                header("Location: registration.php?error=$result");
                             }
                         }
                         else {
-                            echo "Error3: " . $budget_table . "<br>" . $connection_created1->error;
+                            $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                            header("Location: registration.php?error=$result");
                         }
                     }
                     else {
-                        echo "Error3: " . $retirement_table . "<br>" . $connection_created1->error;
+                        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                        header("Location: registration.php?error=$result");
                     }
                 }
                 else {
-                    echo "Error3: " . $beneficiaries_tableres . "<br>" . $connection_created1->error;
+                    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+                    header("Location: registration.php?error=$result");
                 }
 } else {
-    echo "Error: " . $database_new . "<br>" . $connection_created->error;
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: registration.php?error=$result");
 }}
-else{ echo "Error: " . $sql . "<br>" . $connection->error;}
+else{
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again";
+    header("Location: registration.php?error=$result");
+}
 
+} else {
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><p>Password should be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit.</p>";
+    header("Location: registration.php?error=$result");
+}
 $connection->close();
 
+function generateAuthCode() {
+    $bytes = random_bytes(31);
+    return bin2hex($bytes);
+}
 ?>

@@ -92,6 +92,7 @@ function fetchDataAndPopulateTable() {
     document.getElementById('transactionVolumeChart').style.display = 'none';
     document.getElementById('adminTable').style.display = 'none';
     document.getElementById('adminhealthChart').style.display = 'none';
+    localStorage.setItem('lastAccessedSection', "accountCreationChart");
   }
 
   // Function to show the table
@@ -102,6 +103,7 @@ function fetchDataAndPopulateTable() {
     document.getElementById('transactionVolumeChart').style.display = 'block';
     document.getElementById('adminTable').style.display = 'none';
     document.getElementById('adminhealthChart').style.display = 'none';
+    localStorage.setItem('lastAccessedSection', "transactionVolumeChart");
   }
   
   // Function to show the table
@@ -112,6 +114,7 @@ function fetchDataAndPopulateTable() {
     document.getElementById('adminhealthChart').style.display = 'none';
     document.getElementById('adminTable').style.display = 'table';
     $('#adminTable').DataTable(); // Initialize DataTable
+    localStorage.setItem('lastAccessedSection', "adminTable");
   }
   
   function showadminhealthChart() {
@@ -121,6 +124,7 @@ function fetchDataAndPopulateTable() {
     document.getElementById('transactionVolumeChart').style.display = 'none';
     document.getElementById('adminTable').style.display = 'none';
     document.getElementById('adminhealthChart').style.display = 'block';
+    localStorage.setItem('lastAccessedSection', "adminhealthChart");
   }
 
   // Function to fetch system health value from the server
@@ -159,9 +163,9 @@ function fetchDataAndPopulateTable() {
 
   // Function to determine chart colors based on the system health value
   function getChartColors(systemHealthValue) {
-      if (systemHealthValue > 53.3333333333) {
+      if (systemHealthValue > 80) {
           return ['#4CAF50', 'lightgrey'];
-      } else if (systemHealthValue > 33.3333333333) {
+      } else if (systemHealthValue > 50) {
           return ['#FFC107', 'lightgrey'];
       } else {
         return ['#FF5722', 'lightgrey'];
@@ -193,5 +197,13 @@ function fetchDataAndPopulateTable() {
   // Initial call to fetch and update the system health value
   getSystemHealthValue();
 
-  
-  
+  document.addEventListener('DOMContentLoaded', function() {
+    var lastAccessedSection = localStorage.getItem('lastAccessedSection');
+    if (lastAccessedSection) {
+        showSection(lastAccessedSection);
+    }
+ });
+ function showSection(sectionId) {
+    document.getElementById(sectionId).style.display = 'block';
+    localStorage.setItem('lastAccessedSection', sectionId);
+ }

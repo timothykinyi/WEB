@@ -17,8 +17,8 @@ $transact = "pay bill";
 $type = $_SESSION['transaction'];
 if($accountno == "")
 {
-    $result = "No payee added !";
-    header("Location: error.php?error=$result");
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>No payee added !";
+    header("Location: profile.php?error=$result");
 }
 
 if (($type  == "not_saved") && ( $myacc == ""))
@@ -32,12 +32,13 @@ $database = $_SESSION['account_no'];
 $db = new mysqli($server,$username,$password,$database);
 if ($db->connect_error)
 {
-    die("Connection failed: " .$db->connect_error );
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+    header("Location: profile.php?error=$res");
 }
 if ($accountno === $database)
 {
-    $result = "You can't send yourself money!";
-    header("Location: error.php?error=$result");
+    $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>You can't send yourself money!";
+    header("Location: profile.php?error=$result");
 }
 else
     {
@@ -66,8 +67,8 @@ else
     }
     if ($bal < $amount)
     {
-        $result = "The account balance is to low to complete this transaction!";
-        header("Location: error.php?error=$result");
+        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>The account balance is to low to complete this transaction!";
+        header("Location: profile.php?error=$result");
 
     }else
     {
@@ -89,11 +90,12 @@ else
                     $er = "Unknown database '".$accountno."'";
                     if($connection1->connect_error == $er)
                     {
-                        $result = "Acoount number doesn't exist ! ";
-                        header("Location: error.php?error=$result");
+                        $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Acoount number doesn't exist ! ";
+                        header("Location: profile.php?error=$result");
                     }
                     else{
-                        die("Connection failed: " .$connection1->connect_error );
+                        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+                        header("Location: profile.php?error=$res");
                     }
                     
                 }
@@ -129,24 +131,29 @@ else
                                 $sq = "INSERT INTO `daily_transactions`(`amount`, `description`) VALUES ('$amount','Bill Payment')";
                                 $res = $con->query($sq);
                                 $_SESSION['balance'] = $newbal;
-                                header("Location: profile.php");
+                                $res = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Bill payed successfully.";
+                                header("Location: profile.php?error=$res");
                             }else
                             { 
-                                echo(" transaction failed ".$sql5. "<br>" .$connection1->error );
+                                $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+                                header("Location: profile.php?error=$res");
                             }
                     
                         }else
                         { 
-                            echo(" transaction failed ".$sql4. "<br>" .$connection1->error );
+                            $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+                            header("Location: profile.php?error=$res");
                         }
                     }else
                     { 
-                        echo(" transaction failed ".$sql2. "<br>" .$connection->error );
+                        $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+                        header("Location: profile.php?error=$res");
                     }
 
                 }else
                 { 
-                    echo(" transaction failed ".$sql1. "<br>" .$connection->error );
+                    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+                    header("Location: profile.php?error=$res");
                 }
         // deposited account data
         

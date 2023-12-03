@@ -20,7 +20,8 @@ function adduser()
     $db = new mysqli("localhost", "root", "","bank");
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
     $first_name = $_POST["first_name"];
     $second_name = $_POST["second_name"];
@@ -31,25 +32,25 @@ function adduser()
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
 
-    $addnewuser = "INSERT INTO admnusers (first_name, second_name, adm_no, role , email , password ,status)
-    VALUE('$first_name', '$second_name', '$Reg_NO', '$role' , '$Email', '$hashedPassword' ,'Active');";
+    $addnewuser = "INSERT INTO admnusers (first_name, second_name, adm_no, role , email , password ,status, log)
+    VALUE('$first_name', '$second_name', '$Reg_NO', '$role' , '$Email', '$hashedPassword' ,'Active') ,'1';";
 
     if($db->query($addnewuser) === true)
     {   
         if (makedb($Reg_NO) === true)
         {
-            echo 'gone';
-            header("Location: superadmin.php");
+            $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>User added succesfully";
+            header("Location: superadmin.php?error=$nres");
         }else
         {
-            $res = "Error: " . $addnewuser . "<br>" . $db->error;
-            header("Location: error.php?error=$res");
+            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+            header("Location: superadmin.php?error=$nres");
         }
         
     }else
     { 
-        $res = "Failed try again. <br> look out for the following: <br>1. Dublicate registration number. <br>2. Dublicate email. ";
-        header("Location: error.php?error=$res");
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again. <br> look out for the following: <br>1. Dublicate registration number. <br>2. Dublicate email. ";
+        header("Location: superadmin.php?error=$nres");
     }
 
 }
@@ -59,7 +60,8 @@ function modifyuser()
     $db = new mysqli("localhost", "root", "","bank");
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $Reg_NO = $_POST["Reg_NO"];
@@ -69,11 +71,12 @@ function modifyuser()
 
     if($db->query($modifyuser) === true)
     {   
-        header("Location: superadmin.php");
+        $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>User modified ";
+        header("Location: superadmin.php?error=$nres");
     }else
     { 
-        $res = "Failed try again ";
-        header("Location: error.php?error=$res");
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
 
@@ -84,7 +87,8 @@ function deactivateUser()
     $db = new mysqli("localhost", "root", "","bank");
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $Reg_NO = $_POST["Reg_NO"];
@@ -93,11 +97,12 @@ function deactivateUser()
 
     if($db->query($deactivateUser) === true)
     {   
-        header("Location: superadmin.php");
+        $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>user deactivated ";
+        header("Location: superadmin.php?error=$nres");
     }else
     { 
-        $res = "Failed try again ";
-        header("Location: error.php?error=$res");
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
 
@@ -108,7 +113,8 @@ function activateUser()
     $db = new mysqli("localhost", "root", "","bank");
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $Reg_NO = $_POST["Reg_NO"];
@@ -117,11 +123,12 @@ function activateUser()
 
     if($db->query($activateUser) === true)
     {   
-        header("Location: superadmin.php");
+        $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>User activated  ";
+        header("Location: superadmin.php?error=$nres");
     }else
     { 
-        $res = "Failed try again ";
-        header("Location: error.php?error=$res");
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
 
@@ -132,7 +139,8 @@ function RemoveUser()
     $db = new mysqli("localhost", "root", "","bank");
     if ($db->connect_error)
     {
-        die("Connection failed: " .$db->connect_error );
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
     $Reg_NO = $_POST["Reg_NO"];
@@ -143,16 +151,17 @@ function RemoveUser()
     {   
         if (removdb($Reg_NO) === true)
         {
-            header("Location: superadmin.php");
+            $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>User removed ";
+            header("Location: superadmin.php?error=$nres");
         }else
         {
-            $res = "Failed again ";
-            header("Location: error.php?error=$res");
+            $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+            header("Location: superadmin.php?error=$nres");
         }
     }else
     {  
-        $res = "Error3: " . $removeUser . "<br>" . $db->error;
-        header("Location: error.php?error=$res");
+        $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+        header("Location: superadmin.php?error=$nres");
     }
 
 

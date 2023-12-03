@@ -16,6 +16,7 @@
           $adm_no = $cookieValues[0];
           $role = $cookieValues[1];
           $log = $cookieValues[2];
+          setcookie("adm_no", "$adm_no", time() + 31536000, "/");
         }else { header("Location: adminlogin.php"); }
 ?>
 <!DOCTYPE html>
@@ -38,9 +39,20 @@ require "system2.php";
   <link rel="stylesheet" href="adminpage.css">
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="news.css">
-
+<link rel="stylesheet" href="show.css">
 </head>
 <body>
+<?php
+    if (isset($_GET["error"])) {
+        $result = $_GET["error"];
+        echo "<form><p class =  'note' > <button onclick ='out();'>x</button><br> <br> $result <br><br></p></form>";
+    }
+    function out()
+    {
+        $result="";
+        header("Location: error.php?error=$result");
+    }
+?>
 <header>
     <div class="head">
         <span class = "span1">

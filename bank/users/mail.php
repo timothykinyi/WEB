@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contact Form</title>
-</head>
-<body>
+<?php
+$to = "kinyi9461@gmail.com";
+$subject = "Subject of the email";
+$message = "This is the body of the email";
+$headers = "From: kinyi9461@gmail.com";
 
-<form action="process_form.php" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required><br>
+$success = mail($to, $subject, $message, $headers);
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br>
+if ($success) {
+    echo "Email sent successfully". error_log("Your error message here", 3, "/path/to/php-error.log");
+    ;
+} else {
+    echo "Error sending email";
+}
 
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea><br>
-
-    <input type="submit" value="Submit">
-</form>
-
-</body>
-</html>
+?>

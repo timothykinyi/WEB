@@ -5,7 +5,8 @@ if (isset($_COOKIE['adm_no'])) {
     $user_id =  $_COOKIE['adm_no'];
 
 } else {
-    echo "Cookie not set.";
+    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>log out failed";
+    header("Location: superadmin.php?error=$nres");
 }
 
 $db = new mysqli("localhost", "root", "","bank");
@@ -21,11 +22,13 @@ if($result === true)
     else { header("Location: adminlogin.php");}
     $values = ["", "" , ''];
     setCookieWithArray($admn, $values, -1);
-    session_destroy();
-    header("Location: adminlogin.php");
+    session_destroy();        
+    $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Logged out ";
+    header("Location: adminlogin.php?error=$nres");
 }else
 { 
-    echo(" failed " .$logout_query. "<br>" .$db->error );
+    $nres = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed Try again ";
+    header("Location: superadmin.php?error=$nres");
 }
 
 
