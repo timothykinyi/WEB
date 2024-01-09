@@ -63,18 +63,18 @@
     <form class="log" action="registration_process.php" method="post" onsubmit="return validateEmail();">
 
         <img class ="logo" src="tmg/24.png" alt="company logo" height="100px">
-        <label for ="firstname" >first name</label>
+        <label for ="firstname" >First name</label>
         <input type="text"  placeholder="Enter your first name" name="first_name" required>
-        <label for ="second_name" >second name</label>
+        <label for ="second_name" >Second name</label>
         <input type="text" placeholder="Enter your second name" name="second_name" required> 
-        <label for ="username" >username</label>
+        <label for ="username" >Username</label>
         <input type="text" placeholder="Enter your username" name="username" required> 
         <label for ="Email" >Email</label>
         <input type="Email" placeholder="Enter your Email"id ="email" name="Email" required > 
-        <label for="password" >password</label>
+        <label for="password" >Password</label>
         <input type="password" id="password" placeholder="Enter your password" name="password" required>
         <br>
-        <button for="submit" id="sub" > submit</button>
+        <button for="submit" id="sub" > Register</button>
         <p>If you have an account <button id="sub1"><a href="index.php">sign in</a></button></p>     
     
     <div id="notification"></div>

@@ -13,8 +13,8 @@ $myacc = $_POST['account-number'];
 $accountno = $_POST['paye'];
 $payee = $_POST['paye'];
 $amount =$_POST["amount"];
-$transact = "pay bill";
-$type = $_SESSION['transaction'];
+$transact = "pay bill"; 
+$type = $_POST["transaction"];
 if($accountno == "")
 {
     $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>No payee added !";

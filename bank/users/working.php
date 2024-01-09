@@ -1,68 +1,50 @@
 <?php
-session_start();
-
-$server = "localhost";
-$username = "root";
-$password = "";
-$database = "bank";
-
-$conn = new mysqli($server, $username, $password, $database);
-if ($conn->connect_error) 
-{
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$username_email = "kinyijr";
-$password = "@Kinyijr1";
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-$sql = "SELECT * FROM `users` WHERE username='$username_email'";
-$result = $conn->query($sql);
-
-$sql1 = "SELECT * FROM `users` WHERE username='$username_email' ";
-
-$result1 = $conn->query($sql1);
-if ($result1->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) 
+    if (isset($_GET["error"])) {
+        $result = $_GET["error"];
+        echo "<form><p class =  'note' > <button onclick ='out();'>x</button>$result</p></form>";
+    }
+    function out()
     {
-        $data = $row['account_no'];
-        $username = $row['username'];
-        $passwrd = $row['password'];
+        $result="";
+        header("Location: error.php?error=$result");
+    }
+?>
+
+<?php
+    if (isset($_COOKIE['userlogin'])) {
+        $login = $_COOKIE['userlogin'];
+        if (isset($_COOKIE['account_no'])) {
+            $account_no = $_COOKIE['account_no'];
+            if ($login === $account_no) {
+                setcookie("account_no", $account_no, time() + 31536000, "/");
+                setcookie("userlogin", "$login", time() + 31536000, "/");
+            } else {
+                header("Location: index.php");
+            }
+        } else {
+            header("Location: index.php");
+        }
+    } else {
+        header("Location: index.php");
+    }
+?>
+
+<?php
+if (isset($_COOKIE['agentlogin'])) {
+    $login = $_COOKIE['agentlogin'];
+    if (isset($_COOKIE['agent_no'])) {
+        $account_no = $_COOKIE['agent_no'];
+        if ($login === $account_no) {
+            setcookie("agent_no", "$account_no", time() + 31536000, "/");
+            setcookie("agentlogin", "$login", time() + 31536000, "/");
+        } else {
+            
+            header("Location: agentlogin.php");
+        }
+    } else {
+        header("Location: agentlogin.php");
     }
 } else {
-    echo "No data found 1.";
-    
+    header("Location: agentlogin.php");
 }
-
-$conns = new mysqli("localhost", "root", "", $data);
-
-if ($conns->connect_error) {
-    die("Connection failed: " . $conns->connect_error);
-}
-$sql0 = "SELECT balance FROM transactions WHERE transactions = 'start' ";
-$result0 = $conns->query($sql0);
-
-while ($row0 = $result0->fetch_assoc())
-{
-$bal = $row0['balance'];
-}
-
-while ($row = $result->fetch_assoc())
-{
-
-}
-if(($username === $username_email) && ($passwrd === $hashedPassword)){
-    
-    $_SESSION['username'] = $username_email;
-    $_SESSION['account_no'] = $data;
-    $_SESSION['balance'] = $bal;
-    setcookie("account_no", $data, time() + 31536000, "/");
-    header("Location: profile.php");
-} else {
-    echo "Login failed. <a href='index.php'>Try again</a>";
-}
-
-$conn->close();
-
-
 ?>

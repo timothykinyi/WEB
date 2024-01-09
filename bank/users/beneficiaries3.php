@@ -16,19 +16,15 @@ if ($db->connect_error)
     header("Location: utilities.php?error=$res");
 }
 
-$savingquery = "SELECT * FROM saving";
-$savingresult = $db->query($savingquery);
+$query = "SELECT * FROM beneficiaries";
+$result = $db->query($query);
 
-$budgetquery = "SELECT * FROM budget";
-$budgetresult = $db->query($budgetquery);
-
-
-$budget = array();
-if ($budgetresult->num_rows > 0) {
-    while ($row = $budgetresult->fetch_assoc()) {
-        $budget[] = $row; 
+$benef = array();
+if ($result->num_rows > 0) {
+    while ($benefrow = $result->fetch_assoc()) {
+        $benef[] = $benefrow; 
     }
 }
 
-echo json_encode($budget);
+echo json_encode($benef);
 ?>

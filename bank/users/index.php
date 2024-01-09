@@ -17,7 +17,6 @@
     function out()
     {
         $result="";
-        header("Location: error.php?error=$result");
     }
 ?>
 <section class="mid">
@@ -26,9 +25,9 @@
 
         <img class ="logo" src="tmg/24.png" alt="company logo" height="100px">
         <label for ="username" >USER / BUSINESS</label>
-        <label for ="username" >username</label>
+        <label for ="username" >Username</label>
         <input name="email/username" type="text" placeholder="Enter your username" name="email" required> 
-        <label for="password" >password</label>
+        <label for="password" >Password</label>
         <input name="password" type="password" name="password" placeholder="Enter your password" required> 
         <br>
         <input type="submit" id="sub" name="loginSubmit" value="Login">

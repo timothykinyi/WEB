@@ -70,6 +70,7 @@
 </header>
 
 <main class ="div2">
+    <div>
 <div id ="popup-menu" >
     <section class="notifications-section">
         <h2>Change Password</h2>
@@ -82,6 +83,7 @@
         </form>
         <div id="notification"></div>
     </section>
+</div>
 </div>
 <div class ="div1">
     <div class = "buttons">

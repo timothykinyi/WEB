@@ -21,5 +21,13 @@ $location = $_SESSION['location'];
 $sql = "SELECT * FROM locations WHERE type='$type' AND location='$location'";
 $result = $conn->query($sql);
 
+$locator = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $locator[] = $row; 
+    }
+}
+
+echo json_encode($locator);
 
 ?>

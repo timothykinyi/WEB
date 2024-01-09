@@ -207,3 +207,5 @@ function fetchDataAndPopulateTable() {
     document.getElementById(sectionId).style.display = 'block';
     localStorage.setItem('lastAccessedSection', sectionId);
  }
+
+ 

@@ -14,4 +14,13 @@ if ($db->connect_error)
 
 $query = "SELECT * FROM notifications";
 $nresult = $db->query($query);
+
+$notifications = array();
+if ($nresult->num_rows > 0) {
+    while ($row = $nresult->fetch_assoc()) {
+        $notifications[] = $row; 
+    }
+}
+
+echo json_encode($notifications);
 ?>

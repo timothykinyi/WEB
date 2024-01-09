@@ -79,3 +79,45 @@ function showSection(sectionId) {
    document.getElementById(sectionId).style.display = 'block';
    localStorage.setItem('lastAccessedSection', sectionId);
 }
+
+var goalname = new XMLHttpRequest();
+goalname.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var goalnamels = JSON.parse(this.responseText);
+        var goalnamel = document.getElementById('goalname');
+        var savingsTable = document.getElementById('savingsTable');
+        goalnamels.forEach(function(saverow) {
+            var option = document.createElement('option');
+            var tbody = document.createElement('tbody');
+            option.innerHTML = 
+                            '<option value="'+ saverow.goal_name +'">'+ saverow.goal_name +'</option>';
+
+            tbody.innerHTML =
+               '<tr>' +
+               '<td>' + saverow.goal_name + '</td>' +
+               '<td>' + saverow.amount + '</td>' +
+               '<td>' + saverow.currentamount + '</td>' +
+               '</tr>'
+            goalnamel.appendChild(option);
+            savingsTable.appendChild(tbody);
+
+        });
+    }
+
+};
+
+goalname.open('GET', 'beneficiaries4.php', true);
+goalname.send();
+
+document.addEventListener('DOMContentLoaded', function () {
+   // Fetch data from the PHP script
+   fetch('loanapp.php')
+       .then(response => response.json())
+       .then(data => {
+           console.log(data);
+
+           document.getElementById('Retirement savings').textContent = ` KSH ${data.toLocaleString()}`;
+
+       })
+       .catch(error => console.error('Error:', error));
+});

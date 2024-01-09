@@ -77,6 +77,28 @@ require "functions.php";
             <h3>Are my transactions secure?</h3>
             <p>Yes, we use advanced encryption to secure your transactions and personal information.</p>
         </li>
+            <h3>How do I open a bank account?</h3>
+            <p>For businesses and personal accounts click the sign up button on the home page and select the create a personal account option.</p>
+            <p>For agents click on the sign up  button then select the join as an agent option.</p>
+        <li>
+        </li>
+            <h3>What are the different types of accounts available?</h3>
+            <p>1. Personal account</p><br>
+            <p>2. Businesses account</p><br>
+            <p>3. Savings accounts</p><br>
+            <p>4. Retirement account</p><br>
+        <li>
+        </li>
+            <h3>How can I check my account balance?</h3>
+            <p>Log in to your account on the transaction page the balance is displayed on the right side.</p>
+        <li>
+        </li>
+            <h3>Can I apply for a loan or credit card online?</h3>
+            <p>Yes, Log in to your account then click on the accounts option.</p>
+        <li>
+        </li>
+            <p>If you have any more questions feel free to contact customer care.</p>
+        <li>
     </ul>
 </section>
 

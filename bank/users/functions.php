@@ -22,8 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Call your PHP function and calculate result
     $result = 0;
     $result = conversion($from, $to, $amount);
+    echo json_encode($benef);
     header("Location: utilities.php?result=$result");
     exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $result = "yes";
+    echo json_encode($result);
 }
 function conversion ($from, $to, $amount)
 {

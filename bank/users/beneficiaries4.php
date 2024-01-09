@@ -16,19 +16,19 @@ if ($db->connect_error)
     header("Location: utilities.php?error=$res");
 }
 
+
 $savingquery = "SELECT * FROM saving";
 $savingresult = $db->query($savingquery);
 
-$budgetquery = "SELECT * FROM budget";
-$budgetresult = $db->query($budgetquery);
-
-
-$budget = array();
-if ($budgetresult->num_rows > 0) {
-    while ($row = $budgetresult->fetch_assoc()) {
-        $budget[] = $row; 
+$saving = array();
+if ($savingresult->num_rows > 0) {
+    while ($row = $savingresult->fetch_assoc()) {
+        $saving[] = $row; 
     }
+} else {
+    $res = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>Failed try again ";
+    header("Location: utilities.php?error=$res");
 }
 
-echo json_encode($budget);
+echo json_encode($saving);
 ?>

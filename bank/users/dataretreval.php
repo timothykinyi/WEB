@@ -15,4 +15,12 @@ if ($db->connect_error)
 $query = "SELECT * FROM paybills";
 $result = $db->query($query);
 
+$payee = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $payee[] = $row; 
+    }
+}
+
+echo json_encode($payee);
 ?>

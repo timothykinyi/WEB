@@ -1,21 +1,3 @@
-<?php
-    if (isset($_COOKIE['userlogin'])) {
-        $login = $_COOKIE['userlogin'];
-        if (isset($_COOKIE['account_no'])) {
-            $account_no = $_COOKIE['account_no'];
-            if ($login === $account_no) {
-                setcookie("account_no", $account_no, time() + 31536000, "/");
-                setcookie("userlogin", "$login", time() + 31536000, "/");
-            } else {
-                header("Location: index.php");
-            }
-        } else {
-            header("Location: index.php");
-        }
-    } else {
-        header("Location: index.php");
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,16 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
 <link rel="stylesheet" href="main.css">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-hJRmIKjzVcSDXXSxj6yAxU5l/9bKJkgXgDqs7cv0Sf8gJgP6kn4tgDReeI2U+Em" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap">
 <link rel="stylesheet" href="show.css">
 <link rel="stylesheet" href="utilities.css">
-<?php
-require "functions.php";
-?> 
-
 </head>
 <body>
 <?php
@@ -77,42 +54,27 @@ require "functions.php";
 <div class ="div1">
 
 <div id = "branch-locator">
+    <section class="branch-locator-section">
 
-<section class="branch-locator-section">
+        <h2>Branch Locator</h2>
+        <form id="branch-locator-form" action ="call.php" method = "post">
+            <label for="location">Enter Your Location:</label>
+            <input type="text" id="location" name="location" required><br><br>
+            <label for="service-type">Select Service Type:</label>
+            <select id="service-type" name="service-type">
+                <option value="branch">Branch</option>
+                <option value="atm">ATM</option>
+            </select><br><br>
+            <input type="submit" value="Find Nearest Location">
+        </form>
 
-    <h2>Branch Locator</h2>
-    <form id="branch-locator-form" action ="call.php" method = "post">
-        <label for="location">Enter Your Location:</label>
-        <input type="text" id="location" name="location" required><br><br>
-        <label for="service-type">Select Service Type:</label>
-        <select id="service-type" name="service-type">
-            <option value="branch">Branch</option>
-            <option value="atm">ATM</option>
-        </select><br><br>
-        <input type="submit" value="Find Nearest Location">
-    </form>
+        <div class="location-results">
+            <h3>Nearest Locations:</h3>
+            <ul id ="locationlist">
+            </ul>
 
-    <div class="location-results">
-        <h3>Nearest Locations:</h3>
-        <ul>
-        <?php
-            include "locator.php";
-            if ($result->num_rows > 0)
-            {
-            while ($row = $result->fetch_assoc()) {
-                 echo '
-                 <li>
-                    <p><strong>Location:</strong>'. $row['location'] .'</p>
-                    <p><strong>Address:</strong>'. $row['al'] .'</p>
-                </li> <br>
-                ';
-            }
-            }else{ echo "<p> no branches or atm in that location <p>";}
-            ?>
-        </ul>
-
-    </div>
-</section>
+        </div>
+    </section>
 </div>
 
 
@@ -165,30 +127,7 @@ require "functions.php";
     </form>
     <div class="budget-list">
         <h3>Your Budgets:</h3>
-        <ul>
-            <?php
-        require "Beneficiary2.php";
-            if ($budgetresult->num_rows > 0)
-            {
-            while ($row = $budgetresult->fetch_assoc()) {
-                 echo '
-                 <li>
-                    <p><strong>Category:</strong>  '. $row['budget_name'] .'</p>
-                    <p><strong>Amount:</strong>  KSH '. $row['amount'] .'</p>
-                    <form id="budget-form"action = "loanapp.php" method = "post" >
-                    <div id = "blank">
-                    <select id="budgetcat" name = "budgetname">
-                        <option   value="'. $row['budget_name'] .'"></option>
-                    </select>
-                    </div>
-                        <input type="submit" name = "DeleteBudgetplan" value="Delete">
-                    </form>
-                  </li>
-                ';
-            }
-            }else{ echo "<p> No budgets added yet <p>";}
-            ?>
-     
+        <ul id = "budhetlist">     
         </ul>
     </div>
 </section>
@@ -228,40 +167,29 @@ require "functions.php";
     </div>
     <div class="currency-converter">
         <h3>Currency Converter</h3>
-        <form id="currency-converter-form" action="functions.php" method= "post">
-            <label for="from-currency">From Currency:</label>
-            <select id="from-currency" name="from-currency">
-                <option value="USD">USD (United States Dollar)</option>
-                <option value="EUR">EUR (Euro)</option>
-                <option value="GBP">GBP (British Pound)</option>
-                <option value="KSH">KSH (Kenyan Shillimg)</option>
-            
-            </select><br><br>
-            <label for="amount">Amount:</label>
-            <input type="number" step="0.01" id="amount" name="amount" required><br><br>
-            <label for="to-currency">To Currency:</label>
-            <select id="to-currency" name="to-currency">
-                <option value="USD">USD (United States Dollar)</option>
-                <option value="EUR">EUR (Euro)</option>
-                <option value="GBP">GBP (British Pound)</option>
-                <option value="KSH">KSH (Kenyan Shillimg)</option>
-
-            </select><br><br>
-            <button id ="conv" >Convert Currency</button>
-            
-            
-        </form>
-        <div class="conversion-result">
-            <h4>Conversion Result:</h4>
-            <?php
-            if (isset($_GET["result"])) {
-                $result = round($_GET["result"], 2);
-                echo "<p>Conversion result is: $result</p>";
-            } else {
-                echo "<p>Conversion result found</p>";
-            }
-            ?>
-        </div>
+        <form id="currency-converter-form">
+    <label for="from-currency">From Currency:</label>
+    <select id="from-currency" name="from-currency">
+        <option value="USD">USD (United States Dollar)</option>
+        <option value="EUR">EUR (Euro)</option>
+        <option value="GBP">GBP (British Pound)</option>
+        <option value="KSH">KSH (Kenyan Shilling)</option>
+    </select><br><br>
+    <label for="amount">Amount:</label>
+    <input type="number" step="0.01" id="amount" name="amount" required><br><br>
+    <label for="to-currency">To Currency:</label>
+    <select id="to-currency" name="to-currency">
+        <option value="USD">USD (United States Dollar)</option>
+        <option value="EUR">EUR (Euro)</option>
+        <option value="GBP">GBP (British Pound)</option>
+        <option value="KSH">KSH (Kenyan Shilling)</option>
+    </select><br><br>
+    <button id="conv" onclick="conversion();">Convert Currency</button>
+</form>
+    <div class="conversion-result">
+    <h4>Conversion Result:</h4>
+    <p id="conversion-result"></p>
+    </div>
     </div>
 </section>
 </div>
@@ -270,49 +198,10 @@ require "functions.php";
 <div id = "beneficiary-management">
 <section class="budget-tracker-section">
             <h3>Manage Beneficiaries</h3>
-            <ul id="beneficiary-list">
 
-
-            <table>
-            <tr>
-                <th>NAME</th>
-                <th> <th>
-                <th>DOB</th>
-                <th> <th>
-                <th>RELATIONSHIP</th>
-            </tr>
-                
-                <?php
-                    include "Beneficiary2.php";
-                    if ($result->num_rows > 0)
-                    {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '
-                        <tr>
-                        <td>'. $row['name'] .'</td>
-                        <td> <td>
-                        <td>'. $row['DOB'] .'</td>
-                        <td> <td>
-                        <td>'. $row['relationship'] .'</td>
-                        <td> <td>
-                        <td>
-                        <form method ="POST" action ="loanapp.php">
-                           <div id = "blank">
-                            <select name ="bname">
-                            <option value="'. $row['name'] .'"></option>
-                            </select>
-                            </div>
-                            <input type="submit" name = "delBeneficiary" value="Remove Beneficiary">
-                        </form>
-                        </td>
-                        </tr>
-                        ';
-                    } 
-                    }else{ echo "<p> no beneficiaries added yet <p>";}
-                    ?>
-
-            </table>
+            <ul id="BeneficiaryTable">
             </ul>
+
 
             <h3>Add Beneficiaries</h3>
             <form id="beneficiary-form" method ="POST" action ="loanapp.php">
@@ -380,9 +269,48 @@ Maintain the security of your assets while easily accessing and managing your be
 </div>
 </div>
 
-<?php include "bottom.php"; ?> 
+<div class = "divee">
+        <div>
+            <h3>BANKING HOURS</h3>
+            <lu>
+                <li>Mon-Fri 8am to 4.30pm
+                <li>Saturdays 8am to 12pm
+                <li>Closed on Sundays
+                <li>Closed on Public holidays
+            </lu>
+        </div>
+        <div>
+            <h3>ABOUT US</h3>
+            <lu>
+                <li><a href = "others.php">About Us</a>
+                <li><a href = "others.php">Contact Us</a>
+            </lu>
+        </div>
+        <div>
+            <h3>FOR YOU</h3>
+            <lu>
+                <li><a href = "option.php">open an Account</a>
+                <li><a href = "accact.php">Get a Loan</a>
+                <li><a href = "accact.php">Get a Card</a>
+                <l1><a href = "others.php">FAQS</a>
+            </lu>
+        </div>
+        <div>
+            <h3>SOCIAL MEDIA</h3>
+            <ul>
+                <l1><a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><img width = "30" src = "tmg/t.png"></a>
+                <l1><a href="https://web.facebook.com/login.php/?_rdc=1&_rdr"><img width = "30" src = "tmg/f.png"></a>
+                <l1><a href="https://www.instagram.com/"><img width = "30" src = "tmg/i.png"></a>
+                <l1><a href="https://www.youtube.com/"><img width = "30" src = "tmg/y.png"></a>
+            </ul>
+        </div>
+    </div>
 <script src="utilities.js"></script>
 <script src ="home.js"></script>
-<?php include "footer.php"; ?> 
+<script src ="z.js"></script>
+<script src="checkcoockie"></script>
+<footer>
+    &copy;  All Rights Reserved. Do not reproduce this page.
+</footer>
 </body>
 </html>

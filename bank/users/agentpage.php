@@ -1,22 +1,3 @@
-<?php
-if (isset($_COOKIE['agentlogin'])) {
-    $login = $_COOKIE['agentlogin'];
-    if (isset($_COOKIE['agent_no'])) {
-        $account_no = $_COOKIE['agent_no'];
-        if ($login === $account_no) {
-            setcookie("agent_no", "$account_no", time() + 31536000, "/");
-            setcookie("agentlogin", "$login", time() + 31536000, "/");
-        } else {
-            
-            header("Location: agentlogin.php");
-        }
-    } else {
-        header("Location: agentlogin.php");
-    }
-} else {
-    header("Location: agentlogin.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +22,7 @@ if (isset($_COOKIE['agentlogin'])) {
     function out()
     {
         $result="";
-        header("Location: agentpage.php?error=$result");
+        header("Location: error.php?error=$result");
     }
 ?>
 <header>
@@ -52,26 +33,7 @@ if (isset($_COOKIE['agentlogin'])) {
 
         <span class = "span">
         <button id="notifications_b" class= "aa">&#128276;</button>
-        
-        <span id="notificationCounter"><?php echo getNotificationCount(); ?></span>
-        <script>updateNotificationCount(<?php  echo getNotificationCount(); ?>);
-            function updateNotificationCount(count) 
-                {
-                const counterElement = document.getElementById("notificationCounter");
-                counterElement.textContent = count;
-                counterElement.style.display = count > 0 ? 'block' : 'none';
-                }
-        </script>
-        <?php
-        function getNotificationCount() 
-        {
-            $counter=0;
-            include "agentnotificationdisp.php";
-            if ($nresult->num_rows > 0)
-            { while ($row = $nresult->fetch_assoc()) {$counter ++;  }}
-            return $counter;
-        }
-        ?>
+        <span id="notificationCounter"></span>
         <button id="settings" class= "aa">&#9881;</button>
         <button class= "ab"><a href="agentlogout.php">Log out</a></button>
         </span>
@@ -134,20 +96,6 @@ if (isset($_COOKIE['agentlogin'])) {
                 <h2>Notifications</h2>
                 <p>Stay informed with important updates and alerts from My Banking:</p>
                 <ul class="notifications-list">
-                    <?php
-                    include "agentnotificationdisp.php";
-                    if ($nresult->num_rows > 0)
-                    {
-                    while ($row = $nresult->fetch_assoc()) {
-                        echo '    
-                        <li>
-                        <p><strong>Notification:</strong>' . $row['messages'] .'</p>
-                        <span class="notification-time">'. $row['date'] .'</span>
-                        </li>
-                        ';
-                        }
-                    }
-                    ?>
                 </ul>
                 <form action="agentnotification.php" method="post">
                 <button type="submit" name="submitButton">Mark as read</button>
@@ -172,6 +120,17 @@ if (isset($_COOKIE['agentlogin'])) {
 <script src="script.js"></script>
 <script src ="home.js"></script>
 <script>
+    document.getElementById("settings").addEventListener("click", function() {
+    if (popupMenu.style.display === "block") {
+        popupMenu.style.display = "none";
+        localStorage.setItem('lastAccessedSection', "");
+    } else {
+        popupMenu.style.display = "block";
+        localStorage.setItem('lastAccessedSection', "popup-menu");
+    }
+    
+});
+
     function checkPasswordStrength() {
     var password = document.getElementById("new-password").value;
     var strongPasswordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
@@ -183,7 +142,40 @@ if (isset($_COOKIE['agentlogin'])) {
         return false; 
     }
 }
+
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    var count = 0;
+    if (this.readyState == 4 && this.status == 200) {
+        var notifications = JSON.parse(this.responseText);
+        var notificationList = document.getElementById('notifications-list');
+        notifications.forEach(function(notification) {
+            var li = document.createElement('li');
+            li.innerHTML = '<p><strong>Notification:</strong>' + notification.messages + '</p>' +
+                           '<span class="notification-time">' + notification.date + '</span>';
+
+            count++;
+            notificationList.appendChild(li);
+        });
+    }
+    document.getElementById('notificationCounter').textContent = count;
+    updateNotificationCount(count);
+};
+
+xhr.open('GET', 'agentnotificationdisp.php', true);
+xhr.send();
+
+
+
+function updateNotificationCount(counts) 
+    {
+    const counterElement = document.getElementById("notificationCounter");
+    counterElement.textContent = counts;
+    counterElement.style.display = counts > 0 ? 'block' : 'none';
+    }
+
 </script>
+<script src = "agen.js"></script>
 <?php include "footer.php"; ?> 
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
-$to = "kinyi9461@gmail.com";
-$subject = "Subject of the email";
-$message = "This is the body of the email";
-$headers = "From: kinyi9461@gmail.com";
+$to = $emailto;
+$subject = "customer support";
+$message = $feedback;
+$headers = "From: bazebank0@gmail.com";
 
 $success = mail($to, $subject, $message, $headers);
 

@@ -614,7 +614,7 @@ function Deposit()
                             $sq = "INSERT INTO `daily_transactions`(`amount`, `description`) VALUES ('$amount','teller deposit')";
                             if ($res = $con->query($sq))
                             {
-                                $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Deposited duccesfully ";
+                                $nres = "<img class ='more' src='tmg/pass.png' alt='company logo' height='100px'>Deposited succesfully ";
                                 header("Location: teller.php?error=$nres");
                             }
                             else

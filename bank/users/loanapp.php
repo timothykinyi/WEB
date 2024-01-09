@@ -448,4 +448,13 @@ function delBeneficiary()
     $connection->close();
 }
 
+
+session_start();
+if (isset($_COOKIE['retirementplan'])) {
+    $data = $_COOKIE['retirementplan'];
+
+}
+echo json_encode($data);
+
+
 ?>

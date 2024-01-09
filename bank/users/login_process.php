@@ -96,5 +96,26 @@ if(($username === $username_email) && password_verify($password , $passwrd)) {
 
 $conn->close();
 }
+session_start();
+if (isset($_COOKIE['userlogin'])) {
+    $login = $_COOKIE['userlogin'];
+    if (isset($_COOKIE['account_no'])) {
+        $account_no = $_COOKIE['account_no'];
+        if ($login === $account_no) {
+            setcookie("account_no", $account_no, time() + 31536000, "/");
+            setcookie("userlogin", "$login", time() + 31536000, "/");
+            
+            $data = array(
+                'username' => $_SESSION['username'],
+                'account_no' => $_SESSION['account_no'],
+                'balance' => $_SESSION['balance'],
+                'status' => $_SESSION['status'],
+            );
+            
+            
+            echo json_encode($data);
+        
+        }}}
+
 
 ?>

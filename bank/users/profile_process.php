@@ -16,7 +16,7 @@ if ($connection ->connect_error)
 $myacc = $_SESSION['account_no'];
 $accountno = $_POST["account-number"];
 $amount =$_POST["amount"];
-$transact = $_SESSION['transaction'];
+$transact =$_POST["transaction"]; 
 if ($accountno === $database)
 {
     $result = "<img class ='more' src='tmg/sad.png' alt='company logo' height='100px'>You can't send yourself money !";

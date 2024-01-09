@@ -26,7 +26,7 @@
         <label for ="user" >AGENT</label>
         <label for ="username" >Email</label>
         <input name="email" type="text" placeholder="Enter your email" name="email" required> 
-        <label for="password" >password</label>
+        <label for="password" >Password</label>
         <input name="password" type="password" name="password" placeholder="Enter your password" required> 
         <br>
         <button for="submit" id="sub"> log in</button>

@@ -26,7 +26,7 @@
         <input type="password" id="new-password" name="new-password" required><br><br>
         <input type="submit"  name = "agentpassword"value="Change Password">
     </form>
-    <form id="notification" class =  'note'></form>
+    <form id="notification" class =  'not'></form>
 </section>
 <script>
     function checkPasswordStrength() {
@@ -36,7 +36,7 @@
             return true;
     } else {
         var notification = document.getElementById("notification");
-        notification.innerHTML = "<button onclick ='out();'>x</button><img class ='more' src='tmg/sad.png' alt='company logo' height='100px'><p>Password should be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit.</p>";
+        notification.innerHTML = "<p style='color: red;'>Password should be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit.</p>";
         return false; 
     }
 }
